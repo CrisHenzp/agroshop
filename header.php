@@ -165,8 +165,8 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
 
                     <h3 class="username text-center"> </h3>
 
-                    <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
-                    <a href="historial_compra.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
+                    <a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
+                    <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
 
                     <?php if ($usuarios == $usuarios): ?>
                       <a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>

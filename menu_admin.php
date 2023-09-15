@@ -27,7 +27,6 @@
         </div>
     </div>
 
-
     <div class="col-xs-12 col-sm-6 col-md-3 cartas">
         <div class="row center-xs">
             <div class="card" style="width: 18rem;">
