@@ -24,9 +24,11 @@
 
 
   <div class="login-page">
+
+    <img src="Public/images/logo-default-196x47.png" alt="Descripción de la imagen">
     <div class="form">
       <form class="login-form" action="login/ingreso.php" method="post">
-        <input type="text" name="apodo_1" placeholder="apodo" required />
+        <input type="text" name="usuario_1" placeholder="usuario" required />
         <input type="password" name="pass" placeholder="Contraseña" required />
         <button type="submit" value="iniciar" name="iniciar_sesion">Iniciar sesion</button>
         <p class="message">No estas registrado? <a href="#">Crear cuenta</a></p>
@@ -34,13 +36,13 @@
       </form>
 
       <form class="register-form" action="login/registro_usu.php" method="post">
-        <input type="text" name="nombre" placeholder="Nombre"/>
-        <input type="text" name="apellido" placeholder="Apellido"/>
-        <input type="text" name="apodo" placeholder="apodo"/>
-        <input type="text" name="email" placeholder="Correo electronico" />
-        <input type="password" name="pass" placeholder="Contraseña"/>
-        <input type="text" name="telefono" placeholder="Teléfono"/>
-        <input type="text" name="direccion" placeholder="Dirección"/>
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="text" name="apellido" placeholder="Apellido" required />
+        <input type="text" name="usuario" placeholder="usuario" required />
+        <input type="text" name="email" placeholder="Correo electronico" required />
+        <input type="password" name="pass" placeholder="Contraseña" required />
+        <input type="text" name="telefono" placeholder="Teléfono" required />
+        <input type="text" name="direccion" placeholder="Dirección" required />
         <select name="tipo_usuario">
           <option value="2" name="2">Productor</option>
           <option value="3" name="3">Comerciante</option>

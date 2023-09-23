@@ -1,13 +1,13 @@
 <?php 
-include_once 'config.php';
+include_once '../config/config.php';
 
-$usuario = $_POST['apodo_1'] ?? '';
+$usuario = $_POST['usuario_1'] ?? '';
 $passwd = $_POST['pass'] ?? '';
 
 session_start();
 
 
-$consulta = "SELECT*FROM usuario where usu_apodo = '$usuario' and usu_pass = '$passwd'";
+$consulta = "SELECT*FROM usuario where usu_usuario = '$usuario' and usu_pass = '$passwd'";
 $resultado = mysqli_query($conexion,$consulta);
 
 $filas = mysqli_fetch_assoc($resultado);

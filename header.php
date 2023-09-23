@@ -167,7 +167,8 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
 
                     <a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
                     <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
-
+                    <a href="menu_admin.php" class="btn btn-primary btn-block"><b>administrador</b></a>
+                    <a href="menu_comerciante.php" class="btn btn-primary btn-block"><b>comerciante</b></a>
                     <?php if ($usuarios == $usuarios): ?>
                       <a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>
 
