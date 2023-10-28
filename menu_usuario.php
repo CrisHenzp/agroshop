@@ -17,7 +17,7 @@
                         <path d="M12 17v-1" />
                         <path d="M15 17v-3" />
                     </svg>
-                    <h5 class="card-title">Editar informacion personal</h5>
+                    <h5 class="card-title">Editar información personal</h5>
                     <p class="card-text">Editar mi perfil de usuario</p>
                     <a href="editar_perfil.php" class="btn btn-primary">Ir a editar</a>
                 </div>
@@ -35,8 +35,8 @@
                         <line x1="10" y1="14" x2="21" y2="3" />
                         <path d="M21 3l-6.5 18a0.55 .55 0 0 1 -1 0l-3.5 -7l-7 -3.5a0.55 .55 0 0 1 0 -1l18 -6.5" />
                     </svg>
-                    <h5 class="card-title">estado de mis pedios</h5>
-                    <p class="card-text">estado de los pedidos de usuario</p>
+                    <h5 class="card-title">Estado de mis pedidos</h5>
+                    <p class="card-text">Estado de los pedidos de usuario</p>
                     <a href="#" class="btn btn-primary">Ir a Pedidos</a>
                 </div>
             </div>
@@ -68,10 +68,38 @@
     </div>
 </div>
 <script>
-    // Aquí puede agregar su código JavaScript si es necesario
+    // Aquí puedes agregar tu código JavaScript si es necesario
 </script>
 
+<style>
+    .card {
+        margin: 30px;
+        width: 200px;
+        height: 290px;
+        background-color: #ECE5E4;
+    }
 
-<br><br><br><br><br><br><br><br>
-<?php
-include('footer.php'); ?>
+    .card:hover {
+        background-color: #CDC5C3;
+    }
+
+    .divicon {
+        padding-left: 10px;
+    }
+
+    .grupocartas {
+        padding-top: 25px;
+    }
+
+    .card-body {
+        padding-bottom: 10px;
+        border-radius: 40px;
+    }
+
+    .btn-primary:hover {
+        background-color: transparent;
+        font-size: 20px;
+    }
+</style>
+
+<?php include('footer.php'); ?>
