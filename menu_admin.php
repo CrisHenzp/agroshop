@@ -42,7 +42,7 @@
                         <circle cx="10.5" cy="4.5" r=".5" />
                         <circle cx="15.5" cy="9.5" r=".5" />
                     </svg>
-                    <h5 class="card-title">Ver Solitudes de Compra</h5>
+                    <h5 class="card-title">Ver Solicitudes de Compra</h5>
                     <p class="card-text">Ver solicitudes de clientes</p>
                     <a href="#" class="btn btn-primary">Ir a Solicitudes</a>
                 </div>
