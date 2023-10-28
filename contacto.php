@@ -4,10 +4,10 @@
 <section class="breadcrumbs-custom-inset">
   <div class="breadcrumbs-custom context-dark bg-overlay-39">
     <div class="container">
-      <h2 class="breadcrumbs-custom-title">Contactanos</h2>
+      <h2 class="breadcrumbs-custom-title">Contáctanos</h2>
       <ul class="breadcrumbs-custom-path">
         <li><a href="index.php">Inicio</a></li>
-        <li class="active">Contactanos</li>
+        <li class="active">Contáctanos</li>
       </ul>
     </div>
     <div class="box-position" style="background-image: url(Public/images/bg-breadcrumbs.jpg);"></div>
@@ -22,6 +22,7 @@
           <div class="box-contacts-body">
             <div class="box-contacts-icon fl-bigmug-line-cellphone55"></div>
             <div class="box-contacts-decor"></div>
+            <span style="font-weight: bold;">Whatsapp</span>
             <p class="box-contacts-link"><a href="tel:#">+569 57462146</a></p>
           </div>
         </article>
@@ -31,6 +32,7 @@
           <div class="box-contacts-body">
             <div class="box-contacts-icon fl-bigmug-line-up104"></div>
             <div class="box-contacts-decor"></div>
+            <span style="font-weight: bold;">Dirección</span>
             <p class="box-contacts-link"><a href="#">4730 Maipo, Region metropolitana, Santiago 8450000</a></p>
           </div>
         </article>
@@ -40,6 +42,7 @@
           <div class="box-contacts-body">
             <div class="box-contacts-icon fl-bigmug-line-chat55"></div>
             <div class="box-contacts-decor"></div>
+            <span style="font-weight: bold;">Mail</span>
             <p class="box-contacts-link"><a href="mailto:#">Agroshop@gmail.com</a></p>
           </div>
         </article>

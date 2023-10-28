@@ -44,7 +44,7 @@
                     <th>Correo</th>
                     <th>Usuario</th>
                     <th>Telefono</th>
-                    <th>Direccion</th>
+                    <th>Dirección</th>
                     <th>Tipo de usuario</th>
                     <th>Acciones</th>
                 </tr>
@@ -80,14 +80,14 @@
                         </td>
 
                         <td>
-                            <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-secondary">
-                                <i class="fas fa-marker"></i>
-                            </a>
-                            <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-danger">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
-                            
-                        </td>
+    <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-primary">
+        <i class="fas fa-marker"></i> Editar
+    </a>
+    <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-danger">
+        <i class="far fa-trash-alt"></i> Borrar
+    </a>
+</td>
+
                     </tr>
                 <?php } ?>
             </tbody>

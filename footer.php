@@ -37,7 +37,7 @@
         <div class="col-sm-6 col-lg-4 col-xl-4">
           <div class="oh-desktop">
             <div class="inset-top-18 wow slideInDown" data-wow-delay="0s">
-              <h5>Informacion por correo</h5>
+              <h5>Información por correo</h5>
               <p>Únase a nuestro boletín informativo por correo electrónico para recibir noticias y consejos.</p>
               <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="subscribe"
                 method="post" action="bat/rd-mailform.php">
@@ -46,10 +46,10 @@
                     data-constraints="@Email @Required">
                   <label class="form-label" for="subscribe-form-5-email">Ingresa tu E-mail</label>
                 </div>
-                <button class="button button-block button-white" type="submit">Suscribete</button>
+                <button class="button button-block button-white" type="submit">Suscríbete</button>
               </form>
               <div class="group-lg group-middle">
-                <p class="text-white">Siguenos en</p>
+                <p class="text-white">Síguenos en</p>
                 <div>
                   <ul class="list-inline list-inline-sm footer-social-list-2">
                     <li><a class="icon fa fa-facebook" href="#"></a></li>

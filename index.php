@@ -84,19 +84,6 @@
             </div>
           </article>
         </div>
-        <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay=".1s">
-          <article class="box-icon-ruby">
-            <div
-              class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
-              <div class="unit-left">
-                <div class="box-icon-ruby-icon linearicons-shovel"></div>
-              </div>
-              <div class="unit-body">
-                <h4 class="box-icon-ruby-title"><a href="#">Extranjero</a></h4>
-              </div>
-            </div>
-          </article>
-        </div>
         <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay=".2s">
           <article class="box-icon-ruby">
             <div

@@ -12,50 +12,48 @@
 <br><br>
 <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
 
-<div class="container">
-
+<div class="image-container">
   <div class="card filterDiv comerciante">
-    <img src="jeans3.jpg" alt="fruits" style="width:100%">
-    <h4>Lorem ipsum dolor sit amet</h1>
-      <p class="price">$2000</p>
-      <p>Lorem ipsum dolor sit amet</p>
+     <img src="https://santaisabel.vtexassets.com/arquivos/ids/174685-750-750?width=750&height=750"  alt="fruits" style="max-width: 100%; height: auto;">
+      <h4>Manzana Roja Granel</h1>
+      <p class="price">$1145</p>
+      <p>500 g ($2.290 x kg)</p>
       <p>Comerciante: tal</p>
       <p><button>Agregar a carrito</button></p>
   </div>
-  <div class="card filterDiv productor">
-    <img src="jeans3.jpg" alt="fruits" style="width:100%">
-    <h4>Lorem ipsum dolor sit amet</h1>
-      <p class="price">$3000</p>
-      <p>Lorem ipsum dolor sit amet</p>
+  <div class="card filterDiv comerciante">
+    <img src="https://santaisabel.vtexassets.com/arquivos/ids/169527/Platano-granel.jpg?v=637521224695700000" alt="fruits" style="max-width: 100%; height: auto;">
+    <h4>Platanos granel</h1>
+      <p class="price">$695</p>
+      <p>500 g ($1.590 x kg)</p>
       <p>Productor: tal</p>
       <p><button>Agregar a carrito</button></p>
   </div>
-  <div class="card filterDiv fruits">
-    <img src="jeans3.jpg" alt="fruits" style="width:100%">
-    <h4>Lorem ipsum dolor sit amet</h1>
-      <p class="price">$3000</p>
-      <p>Lorem ipsum dolor sit amet</p>
+  <div class="card filterDiv comerciante">
+    <img src="https://jumbo.vtexassets.com/arquivos/ids/416214/Kiwi-exportacion-granel.jpg?v=637479990229300000" alt="fruits" style="max-width: 100%; height: auto;">
+    <h4>Kiwi exportación granel</h1>
+      <p class="price">$945</p>
+      <p>500 g ($1.890 x kg)</p>
       <p>Productor: tal</p>
       <p><button>Agregar a carrito</button></p>
   </div>
-  <div class="card filterDiv colors">
-    <img src="jeans3.jpg" alt="fruits" style="width:100%">
-    <h4>Lorem ipsum dolor sit amet</h1>
-      <p class="price">$3000</p>
-      <p>Lorem ipsum dolor sit amet</p>
+  <div class="card filterDiv comerciante">
+    <img src="https://santaisabel.vtexassets.com/arquivos/ids/162932-280-280?" alt="fruits" style="max-width: 100%; height: auto;">
+    <h4>Naranja granel</h1>
+      <p class="price">$1145</p>
+      <p>500 g ($2.290 x kg)</p>
       <p>Productor: tal</p>
       <p><button>Agregar a carrito</button></p>
   </div>
-  <div class="card filterDiv productor">
-    <img src="jeans3.jpg" alt="fruits" style="width:100%">
-    <h4>Lorem ipsum dolor sit amet</h1>
-      <p class="price">$3000</p>
-      <p>Lorem ipsum dolor sit amet</p>
+  <div class="card filterDiv comerciante">
+    <img src="https://santaisabel.vtexassets.com/arquivos/ids/162874-750-750?" alt="fruits" style="max-width: 100%; height: auto;">
+    <h4>Frutilla pote 300 g</h1>
+      <p class="price">$2490</p>
+      <p>1 un ($8.300 x kg)</p>
       <p>Productor: tal</p>
       <p><button>Agregar a carrito</button></p>
   </div>
 </div>
-
 
 <style>
   .card {

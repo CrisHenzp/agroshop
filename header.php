@@ -4,10 +4,7 @@ if (!isset($_SESSION)) {
 }
 $usuarios = $_SESSION['usu_apodo'] ?? null;
 $admin = $_SESSION['id_tipousuario'] ?? null;
-
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -135,7 +132,7 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
                   </li>
                   <li class="rd-nav-item"><a class="rd-nav-link" href="sobre_nosotros.php">Sobre Nosotros</a>
                   </li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="contacto.php">Contactanos</a>
+                  <li class="rd-nav-item"><a class="rd-nav-link" href="contacto.php">Contáctanos</a>
                   </li>
                 </ul>
               </div>

@@ -6,6 +6,98 @@
 *
 * Contexts
 */
+.card {
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.card img {
+	display: block;
+	margin: 0 auto;
+  }
+/* Imágenes responsivas */
+
+.image-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  }
+  
+  .image {
+	width: 100%;
+	max-width: 250px;
+	margin: 10px;
+  }
+  
+  @media (min-width: 768px) {
+	.image {
+	  max-width: 500px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.image {
+	  max-width: 750px;
+	}
+  }
+  
+  /* Otros estilos */
+  
+  .container {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+  }
+  
+  .heading-1 {
+	font-size: 50px;
+	line-height: 1;
+	letter-spacing: .075em;
+  }
+  
+  .paragraph {
+	font-size: 18px;
+	line-height: 1.67;
+	letter-spacing: .025em;
+  }
+  
+  .image-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+  }
+  
+  .image {
+	width: 100%;
+	max-width: 250px;
+	margin: 10px;
+  }
+  
+  @media (min-width: 768px) {
+	.image {
+	  max-width: 500px;
+	}
+  }
+  
+  @media (min-width: 992px) {
+	.image {
+	  max-width: 750px;
+	}
+  }
+  
 a:focus,
 button:focus {
 	outline: none !important;
