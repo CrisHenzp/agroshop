@@ -1,12 +1,16 @@
+
 <?php include_once 'config/config.php'; ?>
 
 <?php include('header.php'); ?>
-<script src="https://kit.fontawesome.com/332b6ce5a2.js" crossorigin="anonymous"></script>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ 
 
-<div class="row">
-    <div class="col-md-4">
+
+<link rel="stylesheet" type="text/css" href="Public/fonts.googleapis.com/css?family=Poppins:300,400,500">
+<link rel="stylesheet" href="Public/css/bootstrap.css">
+<link rel="stylesheet" href="Public/css/fonts.css">
+<link rel="stylesheet" href="Public/css/style.css">
+<div class="row" style="margin:auto;">
+    <div class="col-md-3">
         <!-- MESSAGES -->
 
         <!-- add usuarios form-->
@@ -35,14 +39,14 @@
             </form>
         </div>
     </div>
-    <div class="col-md-8">
-        <table class="table table-bordered">
+    <div class="col-md-8 card card-body" style="margin-left:10px">
+        <table class="table borderless table-striped ">
             <thead>
                 <tr>
+                    <th>Usuario</th>
                     <th>Nombre</th>
                     <th>Apellido</th>
                     <th>Correo</th>
-                    <th>Usuario</th>
                     <th>Telefono</th>
                     <th>Dirección</th>
                     <th>Tipo de usuario</th>
@@ -61,14 +65,15 @@
                             <?php echo $row['usu_nombre']; ?>
                         </td>
                         <td>
+                            <?php echo $row['usu_apodo']; ?>
+                        </td>
+                        <td>
                             <?php echo $row['usu_apellido']; ?>
                         </td>
                         <td>
                             <?php echo $row['usu_email']; ?>
                         </td>
-                        <td>
-                            <?php echo $row['usu_usuario']; ?>
-                        </td>
+                        
                         <td>
                             <?php echo $row['usu_telefono']; ?>
                         </td>
@@ -80,11 +85,11 @@
                         </td>
 
                         <td>
-    <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-primary">
-        <i class="fas fa-marker"></i> Editar
+    <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" style="border-radius:30%" class="btn  col-4" >
+        <i class="fa fa-pencil-square-o fa-2x"  ></i> 
     </a>
-    <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-danger">
-        <i class="far fa-trash-alt"></i> Borrar
+    <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>"style="border-radius:50%" class="btn  col-4" >
+        <i class="material-icons">delete</i> 
     </a>
 </td>
 
@@ -94,6 +99,6 @@
         </table>
     </div>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+
 
 <?php include('footer.php'); ?>

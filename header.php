@@ -13,8 +13,8 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
 <head>
   <title>Agroshop</title>
   <meta name="format-detection" content="telephone=no">
-  <meta name="viewport"
-    content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">–>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
   <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
@@ -23,6 +23,9 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
   <link rel="stylesheet" href="Public/css/bootstrap.css">
   <link rel="stylesheet" href="Public/css/fonts.css">
   <link rel="stylesheet" href="Public/css/style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  
 </head>
 
 <div class="preloader">
@@ -162,16 +165,16 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
 
                     <h3 class="username text-center"> </h3>
 
-                    <a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
+                    <a href="editar_perfil.php" class="btn btn-primary btn-block" role="button"><b>Editar Perfil</b></a>
                     <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
-                    <a href="menu_admin.php" class="btn btn-primary btn-block"><b>administrador</b></a>
-                    <a href="menu_comerciante.php" class="btn btn-primary btn-block"><b>comerciante</b></a>
+                    <a href="menu_admin.php" class="btn btn-primary btn-block"><b>Administrador</b></a>
+                    <a href="menu_comerciante.php" class="btn btn-primary btn-block"><b>Comerciante</b></a>
                     <?php if ($usuarios == $usuarios): ?>
                       <a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>
 
                     <?php endif; ?>
 
-                    <?php if ($usuarios ==NULL): ?>
+                    <?php if ($usuarios == NULL): ?>
                     <a class="btn btn-primary btn-block" action="login/cerrar.session.php"><b>Cerrar Sesion</b></a>
                     <?php endif; ?>
                   </div>
@@ -188,4 +191,5 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
         </div>
       </nav>
     </div>
+   
   </header>
