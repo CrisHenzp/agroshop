@@ -29,7 +29,9 @@
                     <br>
                     <input type="text" name="direccion_2" class="form-control" placeholder="Direccion" required>
                     <br>
-                    <select name="tipo_usuario_2">
+                    <select name="tipo_usuario_2" class="form-control" id="exampleFormControlSelect1" placeholder="Tipo de usuario">
+                        <option disabled selected value="">Tipo de usuario</option>
+                        <option value="1" name="1">Admin</option>
                         <option value="2" name="2">Productor</option>
                         <option value="3" name="3">Comerciante</option>
                         <option value="4" name="4">Cliente</option>
@@ -85,11 +87,12 @@
                         </td>
 
                         <td>
-    <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" style="border-radius:30%" class="btn  col-4" >
-        <i class="fa fa-pencil-square-o fa-2x"  ></i> 
+    <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" style="color:green" class="btn col-4" >
+        <i class="fa fa-pencil-square-o fa-2x" title="Editar usuario"></i> 
     </a>
-    <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>"style="border-radius:50%" class="btn  col-4" >
-        <i class="material-icons">delete</i> 
+    <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" title="Borrar usuario de la existencia" style="color:red" class="btn col-4" >
+    
+    <i class="fa fa-trash-o fa-2x " ></i> </span>   
     </a>
 </td>
 
