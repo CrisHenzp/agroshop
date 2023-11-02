@@ -47,6 +47,10 @@ else{
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
 
+<<<<<<< Updated upstream
+=======
+    <h1 class = "bad">ERROR EN LA AUNTENTUTIFICACION</h1>
+>>>>>>> Stashed changes
     <?php
 
 }

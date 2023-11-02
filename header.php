@@ -14,7 +14,11 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
   <title>Agroshop</title>
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< Updated upstream
   <!--meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"-->
+=======
+  <!meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+>>>>>>> Stashed changes
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta charset="utf-8">
   <link rel="icon" href="public/images/favicon.ico" type="image/x-icon">
@@ -166,7 +170,12 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
                     <h3 class="username text-center"> </h3>
 
                     <a href="editar_perfil.php" class="btn btn-primary btn-block" role="button"><b>Editar Perfil</b></a>
+<<<<<<< Updated upstream
                     <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
+=======
+                    <a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
+                    <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Usuario</b></a>
+>>>>>>> Stashed changes
                     <a href="menu_admin.php" class="btn btn-primary btn-block"><b>Administrador</b></a>
                     <a href="menu_comerciante.php" class="btn btn-primary btn-block"><b>Comerciante</b></a>
                     <?php if ($usuarios == $usuarios): ?>

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 <footer class="section footer-variant-2 footer-modern context-dark section-top-image section-top-image-dark" style="margin-top:15%">
+=======
+<footer class="section footer-variant-2 footer-modern context-dark section-top-image section-top-image-dark" style="margin-top:10%">
+>>>>>>> Stashed changes
   <div class="footer-variant-2-content">
     <div class="container">
       <div class="row row-40 justify-content-between">

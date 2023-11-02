@@ -35,7 +35,7 @@
                     </svg>
                     <h5 class="card-title">Crear un Producto</h5>
                     <p class="card-text">Ver tus productos y modificarlos</p>
-                    <a href="crear_producto.php" class="btn btn-primary">Ir a Mis Productos</a>
+                    <a href="crear.producto.php" class="btn btn-primary">Ir a Mis Productos</a>
                 </div>
             </div>
         </div>
