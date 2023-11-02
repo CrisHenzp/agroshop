@@ -7,7 +7,7 @@ $passwd = $_POST['pass'] ?? '';
 session_start();
 
 
-$consulta = "SELECT*FROM usuario where usu_usuario = '$usuario' and usu_pass = '$passwd'";
+$consulta = "SELECT*FROM usuario where usu_nombre = '$usuario' and usu_pass = '$passwd'";
 $resultado = mysqli_query($conexion,$consulta);
 
 $filas = mysqli_fetch_assoc($resultado);
@@ -31,7 +31,7 @@ if(isset($filas['id_tipousuario'])== 4){ // productor
 }else{
     ?>
 
-    <h1 classs = "bad">ERROR EN LA AUNTENTUTIFICACION</h1>
+    <h1 class = "bad">ERROR EN LA AUNTENTUTIFICACION</h1>
     <?php
 
 }

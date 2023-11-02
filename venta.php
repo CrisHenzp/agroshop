@@ -1,15 +1,15 @@
 <?php include('header.php'); ?>
 
-<br>
+
 <!-- Control buttons -->
-<div id="myBtnContainer">
+<div style="margin-bottom:10px">
   <button class="btn active" onclick="filterSelection('all')"> Mostrar todo</button>
   <button class="btn" onclick="filterSelection('productor')"> Productor</button>
   <button class="btn" onclick="filterSelection('comerciante')"> Comerciante</button>
   <button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
   <button class="btn" onclick="filterSelection('colors')"> Colors</button>
 </div>
-<br><br>
+
 <!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
 
 <div class="image-container">
@@ -106,14 +106,11 @@
     border: none;
     outline: none;
     padding: 12px 16px;
-    background-color: #f1f1f1;
     cursor: pointer;
   }
 
   /* Add a light grey background on mouse-over */
-  .btn:hover {
-    background-color: #ddd;
-  }
+
 
   /* Add a dark background to the active button */
   .btn.active {
