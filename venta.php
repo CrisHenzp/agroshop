@@ -1,58 +1,48 @@
-<?php include('header.php'); ?>
+<?php include('header.php'); 
+  ini_set('memory_limit', '-1');
+  include_once 'config/config.php';
 
-<br>
-<!-- Control buttons -->
-<div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('all')"> Mostrar todo</button>
-  <button class="btn" onclick="filterSelection('productor')"> Productor</button>
-  <button class="btn" onclick="filterSelection('comerciante')"> Comerciante</button>
-  <button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
-  <button class="btn" onclick="filterSelection('colors')"> Colors</button>
-</div>
-<br><br>
-<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+  $consulta = "SELECT * FROM producto a 
+      inner join usuario b on a.id_usuario = b.id_usuario
+      WHERE a.pro_tipo = 1 and b.id_tipousuario = 2 and a.pro_estado = 1";
+  $resultado = mysqli_query($conexion, $consulta);
+    $productoadmin = mysqli_fetch_assoc($resultado);
+
+    $consulta2 = "SELECT * FROM producto a 
+      inner join usuario b on a.id_usuario = b.id_usuario
+      WHERE a.pro_tipo = 2 and b.id_tipousuario in (3,4) and a.pro_estado = 1";
+  $resultado2 = mysqli_query($conexion, $consulta2);
+    $productoadmin2 = mysqli_fetch_assoc($resultado2);
+
+    $consulta3 = "SELECT * FROM producto a 
+      inner join usuario b on a.id_usuario = b.id_usuario
+      inner join tipousuario c on b.id_tipousuario = c.id_tipousuario
+      WHERE b.id_tipousuario = 1 and a.pro_estado = 1";
+  $resultado3 = mysqli_query($conexion, $consulta3);
+    $productoadmin3 = mysqli_fetch_assoc($resultado3);
+
+    $productos = array(); // Inicializar un array para almacenar los resultados
+
+    $productos[]= $productoadmin3;
+
+
+
+?>
+
 
 <div class="image-container">
+  <?php
+      foreach ($productos as $producto) {
+  ?>
   <div class="card filterDiv comerciante">
-     <img src="https://santaisabel.vtexassets.com/arquivos/ids/174685-750-750?width=750&height=750"  alt="fruits" style="max-width: 100%; height: auto;">
-      <h4>Manzana Roja Granel</h1>
-      <p class="price">$1145</p>
-      <p>500 g ($2.290 x kg)</p>
-      <p>Comerciante: tal</p>
-      <p><button>Agregar a carrito</button></p>
+     <img src="<?php echo $producto['pro_imagen'];?>"  alt="fruits" style="max-width: 100%; height: auto;">
+      <h4><?php echo $producto['pro_nombre']; ?></h4>
+      <p class="price">$ <?php echo $producto['pro_precio'];?></p>
+      <p><?php echo $producto['pro_descripcion'];?></p>
+      <p><?php echo $producto['tus_nombre']?>: <?php echo $producto['usu_nombre'].' '.$producto['usu_apellido'];?></p>
+      <p><button id= "agregar_producto">Agregar a carrito</button></p>
   </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://santaisabel.vtexassets.com/arquivos/ids/169527/Platano-granel.jpg?v=637521224695700000" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Platanos granel</h1>
-      <p class="price">$695</p>
-      <p>500 g ($1.590 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://jumbo.vtexassets.com/arquivos/ids/416214/Kiwi-exportacion-granel.jpg?v=637479990229300000" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Kiwi exportación granel</h1>
-      <p class="price">$945</p>
-      <p>500 g ($1.890 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://santaisabel.vtexassets.com/arquivos/ids/162932-280-280?" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Naranja granel</h1>
-      <p class="price">$1145</p>
-      <p>500 g ($2.290 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://santaisabel.vtexassets.com/arquivos/ids/162874-750-750?" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Frutilla pote 300 g</h1>
-      <p class="price">$2490</p>
-      <p>1 un ($8.300 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
+  <?php } ?>
 </div>
 
 <style>

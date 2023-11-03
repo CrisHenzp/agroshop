@@ -1,11 +1,8 @@
 <?php
-if (!isset($_SESSION)) {
   session_start();
-}
-$usuarios = $_SESSION['usu_apodo'] ?? null;
-$admin = $_SESSION['id_tipousuario'] ?? null;
-?>
+  
 
+?>
 
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
@@ -23,6 +20,8 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
   <link rel="stylesheet" href="Public/css/bootstrap.css">
   <link rel="stylesheet" href="Public/css/fonts.css">
   <link rel="stylesheet" href="Public/css/style.css">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
 </head>
 
 <div class="preloader">
@@ -111,19 +110,7 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
                   </div>
                 </div><a class="rd-navbar-basket rd-navbar-basket-mobile fl-bigmug-line-shopping198"
                   href="#"><span>2</span></a>
-                <!-- RD Navbar Search-->
-                <div class="rd-navbar-search">
-                  <button class="rd-navbar-search-toggle"
-                    data-rd-navbar-toggle=".rd-navbar-search"><span></span></button>
-                  <form class="rd-search" action="#">
-                    <div class="form-wrap">
-                      <label class="form-label" for="rd-navbar-search-form-input">Buscar...</label>
-                      <input class="rd-navbar-search-form-input form-input" id="rd-navbar-search-form-input" type="text"
-                        name="search">
-                      <button class="rd-search-form-submit fl-bigmug-line-search74" type="submit"></button>
-                    </div>
-                  </form>
-                </div>
+
                 <!-- RD Navbar Nav-->
                 <ul class="rd-navbar-nav">
                   <li class="rd-nav-item"><a class="rd-nav-link" href="index.php">Inicio</a>
@@ -150,7 +137,7 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
 
             <div class="rd-navbar-project rd-navbar-modern-project">
               <div class="rd-navbar-project-modern-header">
-                <h4 class="rd-navbar-project-modern-title">Perfil </h4>
+                <h4 class="rd-navbar-project-modern-title"> </h4>
                 <div class="rd-navbar-project-hamburger" data-multitoggle=".rd-navbar-main"
                   data-multitoggle-blur=".rd-navbar-wrap" data-multitoggle-isolate>
                   <div class="project-close"><span></span><span></span></div>
@@ -159,20 +146,28 @@ $admin = $_SESSION['id_tipousuario'] ?? null;
               <div class="rd-navbar-project-content rd-navbar-modern-project-content">
                 <div class="container">
                   <div class="left box-primary">
-
                     <h3 class="username text-center"> </h3>
+                    <?php
+                    if (isset($_SESSION['tipo_usuario'])) {
+                      if ($_SESSION['tipo_usuario'] == 1) { // administrador
+                        echo '<a href="menu_admin.php" class="btn btn-primary btn-block"><b>administrador</b></a>';
+                      } else if ($_SESSION['tipo_usuario'] == 2) { // productor
+                        echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
+                        echo '<a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>';
+                      } else if ($_SESSION['tipo_usuario'] == 3) { // comerciante
+                        echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
+                        echo '<a href="menu_comerciante.php" class="btn btn-primary btn-block"><b>comerciante</b></a>';
+                      } else if ($_SESSION['tipo_usuario'] == 4) { // usuario
+                        echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
+                        echo '<a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>';
+                      }
+                    } else {
+                      echo '<a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>';
+                    }
+                    ?>
 
-                    <a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>
-                    <a href="menu_usuario.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>
-                    <a href="menu_admin.php" class="btn btn-primary btn-block"><b>administrador</b></a>
-                    <a href="menu_comerciante.php" class="btn btn-primary btn-block"><b>comerciante</b></a>
-                    <?php if ($usuarios == $usuarios): ?>
-                      <a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>
-
-                    <?php endif; ?>
-
-                    <?php if ($usuarios ==NULL): ?>
-                    <a class="btn btn-primary btn-block" action="login/cerrar.session.php"><b>Cerrar Sesion</b></a>
+                    <?php if (isset($_SESSION['id_usuario'])): ?>
+                      <a class="btn btn-primary btn-block" href="login/cerrar.session.php"><b>Cerrar Sesion</b></a>
                     <?php endif; ?>
                   </div>
                 </div>

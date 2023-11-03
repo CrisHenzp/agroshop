@@ -1,6 +1,30 @@
 <?php include_once 'config/config.php'; ?>
 
-<?php include('header.php'); ?>
+<?php include('header.php');
+
+// Comprobar si el usuario ha iniciado sesión
+if (!isset($_SESSION['id_usuario'])) {
+    // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header('Location: registrar.php');
+    exit;
+}
+
+// Comprobar si el usuario es un administrador
+if ($_SESSION['tipo_usuario'] != 1) {
+    // El usuario no es un administrador, redirigir a la página de inicio
+    header('Location: index.php');
+    exit;
+} else if ($_SESSION['tipo_usuario'] == 2) {
+    header('Location: index.php');
+
+} else if ($_SESSION['tipo_usuario'] == 3) {
+    header('Location: index.php');
+
+} else if ($_SESSION['tipo_usuario'] == 4) {
+    header('Location: index.php');
+    exit;
+}
+?>
 <script src="https://kit.fontawesome.com/332b6ce5a2.js" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -80,13 +104,13 @@
                         </td>
 
                         <td>
-    <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-primary">
-        <i class="fas fa-marker"></i> Editar
-    </a>
-    <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-danger">
-        <i class="far fa-trash-alt"></i> Borrar
-    </a>
-</td>
+                            <a href="crud/edit.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-primary">
+                                <i class="fas fa-marker"></i> Editar
+                            </a>
+                            <a href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" class="btn btn-danger">
+                                <i class="far fa-trash-alt"></i> Borrar
+                            </a>
+                        </td>
 
                     </tr>
                 <?php } ?>

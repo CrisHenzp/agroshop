@@ -1,4 +1,19 @@
-<?php include('header.php'); ?>
+<?php include('header.php'); 
+
+// Comprobar si el usuario ha iniciado sesión
+if (!isset($_SESSION['id_usuario'])) {
+    // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header('Location: registrar.php');
+    exit;
+  }
+  
+  // Comprobar si el usuario es un administrador
+  if ($_SESSION['tipo_usuario'] != 3) {
+    // El usuario no es un administrador, redirigir a la página de inicio
+    header('Location: index.php');
+    exit;
+  } 
+?>
 
 <div class="admin-menu">
     <h2>Menú de Comerciante</h2>
@@ -35,7 +50,7 @@
                     </svg>
                     <h5 class="card-title">Crear un Producto</h5>
                     <p class="card-text">Ver tus productos y modificarlos</p>
-                    <a href="crear_producto.php" class="btn btn-primary">Ir a Mis Productos</a>
+                    <a href="crear.producto.php" class="btn btn-primary">Ir a Mis Productos</a>
                 </div>
             </div>
         </div>
