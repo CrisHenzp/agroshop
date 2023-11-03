@@ -1,5 +1,5 @@
-<?php include('header.php'); 
-
+<?php 
+session_start();
 // Comprobar si el usuario ha iniciado sesión
 if (!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
@@ -8,11 +8,21 @@ if (!isset($_SESSION['id_usuario'])) {
   }
   
   // Comprobar si el usuario es un administrador
-  if ($_SESSION['tipo_usuario'] != 2) {
+  if ($_SESSION['tipo_usuario'] != 1) {
     // El usuario no es un administrador, redirigir a la página de inicio
     header('Location: index.php');
     exit;
-  } 
+  } else if ($_SESSION['tipo_usuario'] == 2) {
+    header('Location: index.php');
+  
+  } else if ($_SESSION['tipo_usuario'] == 3) {
+    header('Location: index.php');
+  
+  } else if ($_SESSION['tipo_usuario'] == 4) {
+    header('Location: index.php');
+    exit;
+  }
+include('header.php'); 
 ?>
 
 <div class="row center-xs around-xs grupocartas">
