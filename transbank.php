@@ -22,9 +22,6 @@ $tokenWs = $initResult->token;
 ?>
 
 
-
-
-
 <form method="post" action="<?php echo $formAction; ?>">
   <input type="hidden" name="token_ws" value="<?php echo $tokenWs; ?>">
   <input type="submit" value="Pagar con Transbank">
