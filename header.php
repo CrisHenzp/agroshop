@@ -71,7 +71,9 @@ foreach ($_SESSION['carrito'] as $producto) {
                 <!-- RD Navbar Basket-->
                 <div class="rd-navbar-basket-wrap">
                   <button class="rd-navbar-basket fl-bigmug-line-shopping198"
-                    data-rd-navbar-toggle=".cart-inline"><span><?php echo $totalCantidad; ?></span></button>
+                    data-rd-navbar-toggle=".cart-inline"><span>
+                      <?php echo $totalCantidad; ?>
+                    </span></button>
                   <div class="cart-inline">
                     <div class="cart-inline-header">
                       <h5 class="cart-inline-title">En carro:<span>
@@ -118,7 +120,8 @@ foreach ($_SESSION['carrito'] as $producto) {
                         <form action="vaciar_carrito.php" method="post">
                           <button type="submit" name="vaciar_carrito"
                             class="button button-md button-default-outline-2 button-wapasha">Vaciar carrito</button>
-                        </form><a class="button button-md button-primary button-pipaluk" href="checkout.php">Proceder al pago</a>
+                        </form><a class="button button-md button-primary button-pipaluk"
+                          href="carrito.php">Proceder al pago</a>
                       </div>
                     </div>
                   </div>
@@ -164,9 +167,6 @@ foreach ($_SESSION['carrito'] as $producto) {
                     if (isset($_SESSION['tipo_usuario'])) {
                       if ($_SESSION['tipo_usuario'] == 1) { // administrador
                         echo '<a href="menu_admin.php" class="btn btn-primary btn-block"><b>administrador</b></a>';
-
-
-
                       } else if ($_SESSION['tipo_usuario'] == 2) { // productor
                         echo '<h3 class="username text-center">Menú de productor</h3>';
                         echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
@@ -190,22 +190,18 @@ foreach ($_SESSION['carrito'] as $producto) {
                         echo '<a href="" class="btn btn-primary btn-block"><b>Ver Mis Pedidos</b></a>';
 
                         echo '<a href="" class="btn btn-primary btn-block"><b>Ventas Realizadas</b></a>';
-
-
                       } else if ($_SESSION['tipo_usuario'] == 4) { // usuario
-                        echo '<h3 class="username text-center">Menú de usuario</h3>';
+                        echo '<h3 class="username text-center">Menú de cliente</h3>';
                         echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
 
                         echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>';
 
                         echo '<a href="" class="btn btn-primary btn-block"><b>Estado de sus compras</b></a>';
-
                       }
                     } else {
                       echo '<a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>';
                     }
                     ?>
-
                     <?php if (isset($_SESSION['id_usuario'])): ?>
                       <a class="btn btn-primary btn-block" href="login/cerrar.session.php"><b>Cerrar Sesion</b></a>
                     <?php endif; ?>

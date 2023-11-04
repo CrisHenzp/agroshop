@@ -1,5 +1,12 @@
 <?php
+
 include('header.php');
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['id_usuario'])) {
+  // Si el usuario no ha iniciado sesión, redirigir a la página de registro
+  header('Location: registrar.php');
+  exit();
+}
 ini_set('memory_limit', '-1');
 include_once 'config/config.php';
 
@@ -18,8 +25,9 @@ $resultado2 = mysqli_query($conexion, $consulta2);
 $consulta3 = "SELECT * FROM producto a 
   inner join usuario b on a.id_usuario = b.id_usuario
   inner join tipousuario c on b.id_tipousuario = c.id_tipousuario
-  WHERE b.id_tipousuario = 1 and a.pro_estado = 1";
+  WHERE a.pro_estado = '1'";
 $resultado3 = mysqli_query($conexion, $consulta3);
+
 
 $productos1 = array(); // Array para almacenar los resultados de la primera consulta
 $productos2 = array(); // Array para almacenar los resultados de la segunda consulta
@@ -37,58 +45,125 @@ while ($productoadmin3 = mysqli_fetch_assoc($resultado3)) {
 }
 ?>
 
-
-<div class="image-container">
-  <?php
-  if (isset($productos1)) {
-    generarTarjetas($productos1);
-  }
-  if (isset($productos2)) {
-    generarTarjetas($productos2);
-  }
-  if (isset($productos3)) {
-    generarTarjetas($productos3);
-  }
-  ?>
-</div>
+<?php
+$id_usuario = $_SESSION["id_usuario"];
+$consulta4 = "SELECT * FROM usuario WHERE id_usuario = '$id_usuario' ";
+$resultado4 = mysqli_query($conexion, $consulta4);
+$usuario4 = mysqli_fetch_assoc($resultado4);
+if ($usuario4['id_tipousuario'] == 2 || $usuario4['id_tipousuario'] == 3) {
+  foreach ($productos1 as $producto) {
+    ?>
+    <h3>productos de productores</h3>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card filterDiv">
+            <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
+              <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
+              <h4>
+                <?php echo $producto['pro_nombre']; ?>
+              </h4>
+              <p class="price">$
+                <?php echo $producto['pro_precio']; ?> x kg
+              </p>
+              <p>
+                <?php echo $producto['pro_descripcion']; ?>
+              </p>
+              <p>
+                <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
+                <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
+              </p>
+              <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
+              <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
+              <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
+              <input type="hidden" name="cantidad" value="1">
+              <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar al
+                  carrito</button></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  <?php }
+} ?>
 
 <?php
-function generarTarjetas($productos)
-{
-  foreach ($productos as $producto) {
+if ($usuario4['id_tipousuario'] == 3 || $usuario4['id_tipousuario'] == 4) {
+  foreach ($productos2 as $producto) {
     ?>
-    <div class="card">
-      <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
-        <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
-        <h4>
-          <?php echo $producto['pro_nombre']; ?>
-        </h4>
-        <p class="price">$
-          <?php echo $producto['pro_precio']; ?> x kg
-        </p>
-        <p>
-          <?php echo $producto['pro_descripcion']; ?>
-        </p>
-        <p>
-          <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
-          <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
-        </p>
-        <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
-        <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
-        <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
-        <input type="hidden" name="cantidad" value="1">
-        <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar al
-            carrito</button></p>
-      </form>
+    <h3>productos de comerciantes</h3>
+    <div class="container ">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card filterDiv">
+            <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
+              <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
+              <h4>
+                <?php echo $producto['pro_nombre']; ?>
+              </h4>
+              <p class="price">$
+                <?php echo $producto['pro_precio']; ?> x kg
+              </p>
+              <p>
+                <?php echo $producto['pro_descripcion']; ?>
+              </p>
+              <p>
+                <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
+                <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
+              </p>
+              <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
+              <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
+              <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
+              <input type="hidden" name="cantidad" value="1">
+              <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar
+                  al
+                  carrito</button></p>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  <?php }
+} ?>
 
-    <?php
-  }
-}
-
-?>
-
-
+<?php if ($usuario4['id_tipousuario'] == 1) { ?>
+  <h3>listado de productos</h3>
+  <div class="container">
+    <div class="row">
+      <?php
+      foreach ($productos3 as $producto) {
+        ?>
+        <div class="col-sm-3">
+          <div class="card">
+            <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
+              <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
+              <h4>
+                <?php echo $producto['pro_nombre']; ?>
+              </h4>
+              <p class="price">$
+                <?php echo $producto['pro_precio']; ?> x kg
+              </p>
+              <p>
+                <?php echo $producto['pro_descripcion']; ?>
+              </p>
+              <p>
+                <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
+                <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
+              </p>
+              <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
+              <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
+              <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
+              <input type="hidden" name="cantidad" value="1">
+              <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar
+                  al
+                  carrito</button></p>
+            </form>
+          </div>
+        </div>
+      <?php } ?>
+    </div>
+  </div>
+<?php } ?>
 
 
 <style>
@@ -98,6 +173,7 @@ function generarTarjetas($productos)
     margin: auto;
     text-align: center;
     font-family: arial;
+
   }
 
   .card p {
@@ -133,7 +209,8 @@ function generarTarjetas($productos)
 </style>
 
 <br><br><br><br><br>
-<?php include('footer.php'); ?>
+
 </body>
 
 </html>
+<?php include('footer.php'); ?>

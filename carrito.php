@@ -1,7 +1,8 @@
 <?php include('header.php'); ?>
-
+<br>
 <div class="container">
-  <h1>Carrito de compras</h1>
+  <h2>Carrito de compras</h2>
+  <br><br><br><br>
   <table class="table">
     <thead>
       <tr>
@@ -16,18 +17,27 @@
       <?php foreach ($_SESSION['carrito'] as $producto): ?>
         <tr>
           <td><img style="width: 108px; height: 100px;" src="<?php echo $producto['pro_imagen']; ?>" alt="" /></td>
-          <td><?php echo $producto['pro_nombre']; ?></td>
-          <td>$<?php echo $producto['pro_precio']; ?></td>
+          <td>
+            <?php echo $producto['pro_nombre']; ?>
+          </td>
+          <td>$
+            <?php echo $producto['pro_precio']; ?>
+          </td>
           <td>1</td> <!-- Asume que la cantidad de cada producto es 1 -->
-          <td>$<?php echo $producto['pro_precio']; ?></td>
+          <td>$
+            <?php echo $producto['pro_precio']; ?>
+          </td>
         </tr>
       <?php endforeach; ?>
     </tbody>
   </table>
   <div class="text-right">
-    <h4>Total: $<?php echo number_format($totalPrecio, 2); ?></h4>
-    <a href="checkout.php" class="btn btn-primary">Proceder al pago</a>
+    <h4>Total: $
+      <?php echo number_format($totalPrecio, 2); ?>
+    </h4>
+    <a href="checkout.php" class="btn btn-primary">mercado pago</a>
+    <a href="checkout.php" class="btn btn-primary">transbank</a>
   </div>
 </div>
-
+<br><br><br><br><br><br><br>
 <?php include('footer.php'); ?>
