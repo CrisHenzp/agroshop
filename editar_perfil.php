@@ -6,23 +6,7 @@ if (!isset($_SESSION['id_usuario'])) {
     header('Location: registrar.php');
     exit;
   }
-  
-  // Comprobar si el usuario es un administrador
-  if ($_SESSION['tipo_usuario'] != 1) {
-    // El usuario no es un administrador, redirigir a la página de inicio
-    header('Location: index.php');
-    exit;
-  } else if ($_SESSION['tipo_usuario'] == 2) {
-    header('Location: index.php');
-  
-  } else if ($_SESSION['tipo_usuario'] == 3) {
-    header('Location: index.php');
-  
-  } else if ($_SESSION['tipo_usuario'] == 4) {
-    header('Location: index.php');
-    exit;
-  }
-?>
+
 $active_facturas = "";
 $active_productos = "";
 $active_clientes = "";
@@ -31,9 +15,6 @@ $active_perfil = "active";
 $title = "Perfil";
 
 ?>
-
-<?php include("header.php"); ?>
-
 <div class="container">
     <div class="row">
         <form method="post" id="perfil">

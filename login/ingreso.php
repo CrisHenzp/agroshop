@@ -1,10 +1,11 @@
 <?php 
+session_start();
 include_once '../config/config.php';
 
 $usuario = $_POST['usuario_1'] ?? '';
 $passwd = $_POST['pass'] ?? '';
 
-session_start();
+
 
 
 $consulta = "SELECT*FROM usuario where usu_usuario = '$usuario' and usu_pass = '$passwd'";

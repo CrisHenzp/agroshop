@@ -1,7 +1,6 @@
 <?php include_once 'config/config.php'; ?>
 
-<?php include('header.php');
-
+<?php 
 // Comprobar si el usuario ha iniciado sesión
 if (!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
@@ -24,6 +23,7 @@ if ($_SESSION['tipo_usuario'] != 1) {
     header('Location: index.php');
     exit;
 }
+include('header.php');
 ?>
 <script src="https://kit.fontawesome.com/332b6ce5a2.js" crossorigin="anonymous"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"

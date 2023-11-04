@@ -104,7 +104,11 @@ $id_usuario = $_SESSION['id_usuario'];
 
 
 <h2>Listar mis productos</h2>
-
+<h2>Listar mis productos</h2>
+<h2>Listar mis productos</h2>
+<h2>Listar mis productos</h2>
+<h2>Listar mis productos</h2>
+<h2>Listar mis productos</h2>
 <br><br><br><br><br><br><br>
 
 

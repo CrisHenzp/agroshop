@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,6 @@
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
   <!-- Google Fonts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <!-- Estilos -->
@@ -14,17 +17,8 @@
 </head>
 
 <body>
-  <?php
-  session_start();
-  if (isset($_SESSION['message'])) {
-    echo '<p class="message">' . $_SESSION['message'] . '</p>';
-    unset($_SESSION['message']);
-  }
-  ?>
-
 
   <div class="login-page">
-
     <img src="Public/images/logo-default-196x47.png" alt="Descripción de la imagen">
     <div class="form">
       <form class="login-form" action="login/ingreso.php" method="post">
@@ -52,8 +46,6 @@
         <button type="submit" value="registro" name="registrar">Registar</button>
         <p class="message">Ya estas registrado? <a href="#">Iniciar sesion</a></p>
       </form>
-
-
     </div>
   </div>
 
@@ -180,11 +172,7 @@
     $('.message a').click(function () {
       $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
     });
-
-
   </script>
-
-
 </body>
 
 </html>
