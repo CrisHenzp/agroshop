@@ -27,8 +27,30 @@ if($filas){
         header("location:../menu_usuario.php");
     }
 }else{
-    echo '<h1 class="bad">Error en la autenticación</h1>';
-}
+    ?>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+          <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Error de autenticación</h4>
+            <p>Lo sentimos, la información de autenticación proporcionada es incorrecta. Por favor, verifique sus credenciales e inténtelo de nuevo.</p>
+            <hr>
+            <p class="mb-0">Si sigue teniendo problemas, póngase en contacto con el soporte.</p>
+            <a href="../registrar.php"style="border-radius:5%;display: block;margin-right: auto;margin-left: auto; margin-top:5%" class="btn btn-secondary col-2" >
+          <i class="fa fa-arrow-left" >Volver</i> 
+      </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>  
+      <?php
+  
+  }
 
 
 mysqli_close($conexion);

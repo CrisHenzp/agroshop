@@ -11,68 +11,47 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
 <br><br>
-<h2>historial de compra</h2>
-<div>
-    <table>
-        <tr>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>estado</th>
-            <th>comerciante</th>
-            <th>factura</th>
-        </tr>
-        <tr>
-            <td>naraja</td>
-            <td>10</td>
-            <td>entregado</td>
-            <td>juan</td>
-            <td>
-                <a href="" class="btn btn-small "><i class="fa-solid fa-download"></i></a>
-            </td>
-        </tr>
-        <tr>
-            <td>frutilla</td>
-            <td>21</td>
-            <td>entregado</td>
-            <td>juan</td>
-            <td>
-                <a href="" class="btn btn-small "><i class="fa-solid fa-download"></i></a>
-            </td>
-        </tr>
-        <tr>
-            <td>arandano</td>
-            <td>12</td>
-            <td>en proceso</td>
-            <td>juan</td>
-            <td>
-                <a href="" class="btn btn-small "><i class="fa-solid fa-download"></i></a>
-            </td>
-        </tr>
 
-    </table>
+
+<div  class="col-md-10 card card-body mb-5"  style="margin:auto;padding:auto;">
+        <h2>Historial de pedidos</h2>
+        <br>
+        <hr> 
+        
+        <table class="table borderless table-striped col-md-12">
+            <tr WIDTH="100" HEIGHT="100">
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Estado</th>
+                <th>Vendedor</th>
+                <th>Factura</th>
+            </tr>
+            <tr>
+                <td>Naranjas</td>
+                <td>10 (kg)</td>
+                <td>Entregado</td>
+                <td>Juan</td>
+                <td> <a href="" class="btn btn-small "><i class="fa-solid fa-download"></i></a> </td>
+            </tr>
+            <tr>
+                <td>Frutilla</td>
+                <td>21 (kg)</td>
+                <td>Entregado</td>
+                <td>Juan</td>
+                <td> <a href="" class="btn btn-small "><i class="fa-solid fa-download"></i></a> </td>
+            </tr>
+            <tr>
+                <td>Arandano</td>
+                <td>12 (kg)</td>
+                <td>En proceso</td>
+                <td>Juan</td>
+                <td> <a href="" class="btn btn-small "><i class="fa-solid fa-download"></i></a> </td>
+            </tr>
+        </table>
+    
 </div>
-<br><br><br><br><br><br><br><br><br><br>
-<style>
-    table {
-        margin-left: auto;
-        margin-right: auto;
 
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 70%;
-        border: 1px solid #ddd;
-    }
 
-    th,
-    td {
-        text-align: center;
-        padding: 16px;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-</style>
 
 <?php
 include('footer.php'); ?>

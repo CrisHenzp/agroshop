@@ -24,35 +24,44 @@ $id_usuario = $_SESSION['id_usuario'];
 
 </script>
 
-<div class="comerciante-menu card-body">
-    <h2>Menu de Comerciante</h2>
-    <div class="formulario-producto">
-        <form action="guardar_producto.php" method="post" enctype="multipart/form-data">
-            <input type="text" name="nombre_pro" placeholder="Nombre del producto" required>
-            <textarea name="descripcion_pro" placeholder="Descripción del producto" required></textarea>
-            <select name="categoria" required>
-                <option value="">Selecciona una categoría</option>
-                <option value="1">Manzanas</option>
-                <option value="2">Plátano</option>
-                <option value="3">Kiwi</option>
-                <option value="4">Frutillas</option>
-                <option value="5">Sandía</option>
-                <option value="6">Naranja</option>
-                <option value="7">Naranja</option>
-                <option value="8">Naranja</option>
-                <option value="9">Naranja</option>
-                <option value="10">Naranja</option>
+<div class="row mb-5" style="margin:auto;height: auto">
+        <div class="card card-body col-4 formulario-producto" style="margin-left:1%">
+            <h3>Crear nuevo producto</h3>
+                <hr>
+            <form action="guardar_producto.php" method="post" enctype="multipart/form-data">
+                <div class="form-group" style="text-align:left;font-weight:bold">
+                    <label style="margin-top:1%">Nombre del fruto</label>
+                    <input  type="text" name="nombre_pro" class="form-control" placeholder="Ej. Naranja de sangre" />
+                    <label style="margin-top:1%">Descripción</label>
+                    <textarea  type="text" name="descripcion_pro" class="form-control" placeholder="Ej. Las Naranjas de sangre 
+                    tienen pocas semillas y son muy tiernas. Además, tienen un sabor más ácido y un tamaño inferior al de la naranja común"></textarea>
+                    <label style="margin-top:1%">Categoria</label>
+                    <select name="categoria" required>
+                        <option value="" disabled selected>Selecciona una categoría</option>
+                        <option value="1">Frutas</option>
+                        <option value="2">Verduras</option>
+                        <option value="3">Tuberculos</option>
+                        <option value="4">Granos</option>
             </select>
-            <input type="number" name="precio_pro" placeholder="Precio" required>
-            <input type="number" name="stock_pro" placeholder="Stock" required>
-            <input type="file" name="pro_imgen" required>
+                <label style="margin-top:1%">Precio</label>
+                <input type="number" name="precio_pro" placeholder="Ej.$10000" required>
+                <label style="margin-top:1%">Cantidad (kg)</label>
+                <input type="number" name="stock_pro" placeholder="Ej.100 (kg)" required>
+                <label style="margin-top:1%">Imagen</label>
+                <input type="file" class="form-control" name="pro_imgen" required>
             <button type="submit" name="submit">Guardar Producto</button>
-        </form>
+                </form>
+            </div>
     </div>
-    <div class="tabla-productos">
-        <h2>Listar mis productos</h2>
+
+
+    <div class="tabla-productos card card-body mb-5" style="margin:2%">
+        <h3>Mis productos</h3>
+        <hr>
+        <br>
         <div>
-            <table>
+            
+            <table class="table borderless table-striped">
                 <tr>
                     <th>Imagen</th>
                     <th>Nombre</th>
@@ -87,9 +96,11 @@ $id_usuario = $_SESSION['id_usuario'];
                         <td>
                             <?php echo $producto['pro_estado']; ?>
                         </td>
-                        <td>
-                            <a href="" class="btn btn-primary"><i class="fas fa-marker"></i> Editar</a>
-                            <a href="" class="btn btn-danger"><i class="far fa-trash-alt"></i> Borrar</a>
+                        <td class="btn">
+                            <a href=""  style="color:green" class="btn col-2 " title="Editar producto">
+                            <i class="fa fa-pencil-square-o fa-lg"></i></a>
+                            <a href="" style="color:#F07155;"class="btn col-2" title="Eliminar producto de la existencia">
+                            <i class="fa fa-trash fa-lg"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
@@ -100,24 +111,12 @@ $id_usuario = $_SESSION['id_usuario'];
 
 
 
-
-
-
-<h2>Listar mis productos</h2>
-<h2>Listar mis productos</h2>
-<h2>Listar mis productos</h2>
-<h2>Listar mis productos</h2>
-<h2>Listar mis productos</h2>
-<h2>Listar mis productos</h2>
-<br><br><br><br><br><br><br>
-
-
 <style>
     .formulario-producto,
     .tabla-productos {
         float: left;
-        width: 45%;
-        margin: 2.5%;
+        width: 60%;
+        margin: 0.5%;
     }
 
     .formulario-producto input,
