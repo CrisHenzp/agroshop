@@ -35,8 +35,7 @@
     <h4>Total: $
       <?php echo number_format($totalPrecio, 2); ?>
     </h4>
-    <a href="transbank.php" class="btn btn-primary">pago con mercadopago</a>
-    <a href="mercadopago.php" class="btn btn-primary">pago con transbank</a>
+    <a href="transbank.php" class="btn btn-primary">pagar</a>
   </div>
 </div>
 <br><br><br><br><br><br><br>
