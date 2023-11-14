@@ -58,6 +58,7 @@ if ($usuario4['id_tipousuario'] == 2 || $usuario4['id_tipousuario'] == 3) {
       <div class="row">
         <div class="col-sm-3">
           <div class="card filterDiv">
+            
             <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
               <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
               <h4>
@@ -87,43 +88,44 @@ if ($usuario4['id_tipousuario'] == 2 || $usuario4['id_tipousuario'] == 3) {
   <?php }
 } ?>
 
+
+
+<!-- Producto con diseño -->
 <?php
 if ($usuario4['id_tipousuario'] == 3 || $usuario4['id_tipousuario'] == 4) {
   foreach ($productos2 as $producto) {
     ?>
-    <h3>productos de comerciantes</h3>
+    <h3>Productos de comerciantes</h3>
     <div class="container ">
       <div class="row">
         <div class="col-sm-3">
-          <div class="card filterDiv">
-            <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
-              <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
-              <h4>
-                <?php echo $producto['pro_nombre']; ?>
-              </h4>
-              <p class="price">$
-                <?php echo $producto['pro_precio']; ?> x kg
-              </p>
-              <p>
-                <?php echo $producto['pro_descripcion']; ?>
-              </p>
-              <p>
-                <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
-                <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
-              </p>
+        <div class="card" style="width: 18rem;text-align:left">
+        <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
+          <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
+          <div class="card-body">
+            <h5 class="card-title"> 
+              <?php echo $producto['pro_nombre']; ?>
+              <span style="font-size:16px;">$<?php echo $producto['pro_precio']; ?> x kg</span>
+            </h5>
+            <div class="card-subtitle text-muted"> 
+              <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
+              <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
+            </div>
+            <p class="card-text"><?php echo $producto['pro_descripcion']; ?></p>
+          </div>
+          </p>
               <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
               <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
               <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
               <input type="hidden" name="cantidad" value="1">
-              <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar
-                  al
-                  carrito</button></p>
+              <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar al carrito</button></p>
             </form>
-          </div>
+        </div>
         </div>
       </div>
     </div>
-  <?php }
+  <?php 
+  }
 } ?>
 
 <?php if ($usuario4['id_tipousuario'] == 1) { ?>
@@ -135,6 +137,7 @@ if ($usuario4['id_tipousuario'] == 3 || $usuario4['id_tipousuario'] == 4) {
         ?>
         <div class="col-sm-3">
           <div class="card">
+            
             <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
               <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
               <h4>
@@ -183,9 +186,6 @@ if ($usuario4['id_tipousuario'] == 3 || $usuario4['id_tipousuario'] == 4) {
     text-overflow: ellipsis;
   }
 
-  .price {
-    font-size: 22px;
-  }
 
   .card button {
     border: none;

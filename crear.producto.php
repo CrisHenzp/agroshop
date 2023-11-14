@@ -97,7 +97,7 @@ $id_usuario = $_SESSION['id_usuario'];
                             <?php echo $producto['pro_estado']; ?>
                         </td>
                         <td class="btn">
-                            <a href=""  style="color:green" class="btn col-2 " title="Editar producto">
+                            <a href="editar.producto.php"  style="color:green" class="btn col-2 " title="Editar producto">
                             <i class="fa fa-pencil-square-o fa-lg"></i></a>
                             <a href="" style="color:#F07155;"class="btn col-2" title="Eliminar producto de la existencia">
                             <i class="fa fa-trash fa-lg"></i></a>

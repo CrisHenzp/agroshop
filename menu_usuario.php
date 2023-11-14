@@ -39,7 +39,7 @@ include('header.php');
                     </svg>
                     <h5 class="card-title">Estado de mis pedidos</h5>
                     <p class="card-text">Estado de los pedidos de usuario</p>
-                    <a href="#" class="btn btn-primary">Ir a Pedidos</a>
+                    <a href="" class="btn btn-primary">Ir a Pedidos</a>
                 </div>
             </div>
         </div>

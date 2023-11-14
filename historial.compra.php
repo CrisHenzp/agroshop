@@ -14,7 +14,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
 <div  class="col-md-10 card card-body mb-5"  style="margin:auto;padding:auto;">
-        <h2>Historial de pedidos</h2>
+        <h2>Mis compras</h2>
         <br>
         <hr> 
         

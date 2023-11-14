@@ -54,7 +54,7 @@
                     </svg>
                     <h5 class="card-title">Administración de Pedidos</h5>
                     <p class="card-text">Pedidos y procesos de venta</p>
-                    <a href="#" class="btn btn-primary">Ir a Pedidos</a>
+                    <a href="pedidos.php" class="btn btn-primary">Ir a Pedidos</a>
                 </div>
             </div>
         </div>
@@ -95,8 +95,8 @@
                         <circle cx="15.5" cy="9.5" r=".5" />
                     </svg>
                     <h5 class="card-title">Ver Historial de Compras</h5>
-                    <p class "card-text">Ver compras realizadas</p>
-                    <a href="historial_compra.php" class="btn btn-primary">Ir al historial</a>
+                    <p class="card-text">Ver compras realizadas</p>
+                    <a href="historial.compra.php" class="btn btn-primary">Ir al historial</a>
                 </div>
             </div>
         </div>

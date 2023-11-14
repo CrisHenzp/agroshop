@@ -58,7 +58,7 @@
                     </svg>
                     <h5 class="card-title">Administración de Pedidos</h5>
                     <p class="card-text">Pedidos y procesos de venta</p>
-                    <a href="#" class="btn btn-primary">Ir a Pedidos</a>
+                    <a href="pedidos.php" class="btn btn-primary">Ir a Pedidos</a>
                 </div>
             </div>
         </div>

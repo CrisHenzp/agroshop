@@ -49,7 +49,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     </svg>
                     <h5 class="card-title">Administración de Pedidos</h5>
                     <p class="card-text">Pedidos y procesos de venta</p>
-                    <a href="#" class="btn btn-primary">Ir a Pedidos</a>
+                    <a href="pedidos.php" class="btn btn-primary">Ir a Pedidos</a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@ if (!isset($_SESSION['id_usuario'])) {
                     </svg>
                     <h5 class="card-title">Ver Solicitudes de Compra</h5>
                     <p class="card-text">Ver solicitudes de clientes</p>
-                    <a href="#" class="btn btn-primary">Ir a Solicitudes</a>
+                    <a href="pedidos.php" class="btn btn-primary">Ir a Solicitudes</a>
                 </div>
             </div>
         </div>
