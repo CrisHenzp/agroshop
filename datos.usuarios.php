@@ -1,28 +1,4 @@
-<?php include_once 'config/config.php'; ?>
-
-<?php 
-// Comprobar si el usuario ha iniciado sesión
-if (!isset($_SESSION['id_usuario'])) {
-    // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
-    header('Location: registrar.php');
-    exit;
-}
-
-// Comprobar si el usuario es un administrador
-if ($_SESSION['tipo_usuario'] != 1) {
-    // El usuario no es un administrador, redirigir a la página de inicio
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 2) {
-    header('Location: index.php');
-
-} else if ($_SESSION['tipo_usuario'] == 3) {
-    header('Location: index.php');
-
-} else if ($_SESSION['tipo_usuario'] == 4) {
-    header('Location: index.php');
-    exit;
-}
+<?php include_once 'config/config.php';
 include('header.php');
 ?>
 <script src="https://kit.fontawesome.com/332b6ce5a2.js" crossorigin="anonymous"></script>
