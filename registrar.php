@@ -22,7 +22,7 @@ session_start();
     <img src="Public/images/logo-default-196x47.png" alt="Descripción de la imagen">
     <div class="form">
       <form class="login-form" action="login/ingreso.php" method="post">
-        <input type="text" name="usuario_1" placeholder="usuario" required />
+        <input type="text" name="usuario_1" placeholder="Usuario" required />
         <input type="password" name="pass" placeholder="Contraseña" required />
         <button type="submit" value="iniciar" name="iniciar_sesion">Iniciar sesion</button>
         <p class="message">No estas registrado? <a href="#">Crear cuenta</a></p>

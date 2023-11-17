@@ -121,12 +121,12 @@ foreach ($_SESSION['carrito'] as $producto) {
                           <button type="submit" name="vaciar_carrito"
                             class="button button-md button-default-outline-2 button-wapasha">Vaciar carrito</button>
                         </form><a class="button button-md button-primary button-pipaluk"
-                          href="carrito.php">Proceder al pago</a>
+                          href="carrito.php">Carrito</a>
                       </div>
                     </div>
                   </div>
                 </div><a class="rd-navbar-basket rd-navbar-basket-mobile fl-bigmug-line-shopping198"
-                  href="#"><span>2</span></a>
+                  href="carrito.php"><span><?php echo $totalCantidad; ?></span></a>
                 <!-- RD Navbar Nav-->
                 <ul class="rd-navbar-nav">
                   <li class="rd-nav-item"><a class="rd-nav-link" href="index.php">Inicio</a>

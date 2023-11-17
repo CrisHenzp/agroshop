@@ -20,11 +20,11 @@ if($filas){
     if($filas['id_tipousuario'] == 1){ //administrador 
         header("location:../menu_admin.php");
     }else if($filas['id_tipousuario'] == 2){ // productor 
-        header("location:../menu_productor.php");
+        header("location:../index.php");
     }else if($filas['id_tipousuario'] == 3){ // comerciante
-        header("location:../menu_comerciante.php");
+        header("location:../index.php");
     }else if($filas['id_tipousuario'] == 4){ // productor 
-        header("location:../menu_usuario.php");
+        header("location:../index.php");
     }
 }else{
     ?>

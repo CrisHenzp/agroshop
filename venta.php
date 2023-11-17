@@ -13,19 +13,19 @@ include_once 'config/config.php';
 $consulta = "SELECT * FROM producto a 
   inner join usuario b on a.id_usuario = b.id_usuario
   inner join tipousuario c on b.id_tipousuario = c.id_tipousuario
-  WHERE a.pro_tipo = 1 and b.id_tipousuario = 2 and a.pro_estado = 1";
+  WHERE a.id_tipoproducto = 1 and b.id_tipousuario = 2 and a.pro_estado = 1";
 $resultado = mysqli_query($conexion, $consulta);
 
 $consulta2 = "SELECT * FROM producto a 
   inner join usuario b on a.id_usuario = b.id_usuario
   inner join tipousuario c on b.id_tipousuario = c.id_tipousuario
-  WHERE a.pro_tipo = 2 and b.id_tipousuario in (3,4) and a.pro_estado = 1";
+  WHERE a.id_tipoproducto = 2 and b.id_tipousuario in (3,4) and a.pro_estado = 1";
 $resultado2 = mysqli_query($conexion, $consulta2);
 
 $consulta3 = "SELECT * FROM producto a 
   inner join usuario b on a.id_usuario = b.id_usuario
   inner join tipousuario c on b.id_tipousuario = c.id_tipousuario
-  WHERE a.pro_estado = '1'";
+  WHERE a.pro_estado = 1";
 $resultado3 = mysqli_query($conexion, $consulta3);
 
 
@@ -65,7 +65,7 @@ if ($usuario4['id_tipousuario'] == 2 || $usuario4['id_tipousuario'] == 3) {
                 <?php echo $producto['pro_nombre']; ?>
               </h4>
               <p class="price">$
-                <?php echo $producto['pro_precio']; ?> x kg
+                <?php echo $producto['pro_precio']; ?> x caja
               </p>
               <p>
                 <?php echo $producto['pro_descripcion']; ?>
