@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2023 a las 04:50:28
+-- Tiempo de generación: 18-11-2023 a las 05:26:57
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -184,6 +184,7 @@ CREATE TABLE `producto` (
   `pro_descripcion` varchar(255) NOT NULL,
   `pro_precio` varchar(255) NOT NULL,
   `pro_stock` varchar(255) NOT NULL,
+  `pro_tipo` varchar(255) NOT NULL,
   `pro_estado` int(10) UNSIGNED NOT NULL DEFAULT 1,
   `id_usuario` int(11) NOT NULL,
   `id_unit` int(11) NOT NULL,
@@ -194,10 +195,12 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `pro_imagen`, `pro_nombre`, `pro_descripcion`, `pro_precio`, `pro_stock`, `pro_estado`, `id_usuario`, `id_unit`, `id_tipoproducto`) VALUES
-(17, 'imagenes/174685-750-750.jpg', 'manzanas ', 'estas manzanas son exportadas de la zonas mas recondita de chile', '1000', '100', 1, 1, 5, 1),
-(18, 'imagenes/platano_81df8898_230509161114_1000x692.jpg', 'platano ', 'esta es una exportacion de un pais de sudamerica ', '1000', '121', 1, 17, 2, 1),
-(19, 'imagenes/Kiwi_Actinidia_deliciosa.jpg', 'kiwi', 'esta es una exportacion de un pais de europa', '2000', '231', 1, 15, 5, 1);
+INSERT INTO `producto` (`id_producto`, `pro_imagen`, `pro_nombre`, `pro_descripcion`, `pro_precio`, `pro_stock`, `pro_tipo`, `pro_estado`, `id_usuario`, `id_unit`, `id_tipoproducto`) VALUES
+(17, 'imagenes/174685-750-750.jpg', 'manzanas ', 'estas manzanas son exportadas de la zonas mas recondita de chile', '1000', '100', '1', 1, 1, 5, 1),
+(18, 'imagenes/platano_81df8898_230509161114_1000x692.jpg', 'platano ', 'esta es una exportacion de un pais de sudamerica ', '1000', '121', '2', 1, 17, 2, 2),
+(19, 'imagenes/Kiwi_Actinidia_deliciosa.jpg', 'kiwi', 'esta es una exportacion de un pais de europa', '2000', '231', '1', 1, 15, 5, 1),
+(25, 'imagenes/fotonoticia_20180508110600_1200.jpg', 'Naranjas', 'Las Naranjas de sangre tienen pocas semillas y son muy tiernas. Además, tienen un sabor más ácido y un tamaño inferior al de la naranja común.', '1500', '131', '2', 1, 17, 2, 2),
+(26, 'imagenes/uva15.jpg', 'Uvas', 'Estas uvas provienen del sur de chile', '3421', '146', '1', 1, 15, 5, 1);
 
 -- --------------------------------------------------------
 
@@ -318,9 +321,8 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `usu_nombre`, `usu_apellido`, `usu_email`, `usu_pass`, `usu_usuario`, `usu_telefono`, `usu_direccion`, `id_tipousuario`, `usu_estado`) VALUES
 (1, 'admin', 'admin', 'a@a.com', '1234', 'admin', '123456789', 'a', 1, 1),
-(2, 'antonio', 'varasa', 'a@el.com', '4321', 'juan', '987654321', '', 2, 1),
-(15, 'kevin', 'lopez', 'a@a.cl', '54321', 'kevin', '34723894732', 'aaa', 2, 1),
-(16, 'cris', 'apa', 'a@el.com', '12345', 'cris', '8943728', 'aaa', 4, 1),
+(15, 'kevin', 'lopez', 'a@a.cl', '1234', 'kevin', '34723894732', 'aaa', 2, 1),
+(16, 'cris', 'apa', 'a@el.com', '1234', 'cris', '8943728', 'aaa', 4, 1),
 (17, 'nicolas ', 'aa', 'a@el.com', '1234', 'nico', '42353465', 'aaa', 3, 1);
 
 --
@@ -484,7 +486,7 @@ ALTER TABLE `observacion`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `productoventa`

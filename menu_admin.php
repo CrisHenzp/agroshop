@@ -59,31 +59,6 @@ if (!isset($_SESSION['id_usuario'])) {
         <div class="row center-xs">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shopping-cart-discount"
-                        width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#2c3e50" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <circle cx="6" cy="19" r="2" />
-                        <circle cx="17" cy="19" r="2" />
-                        <path d="M17 17h-11v-14h-2" />
-                        <path d="M20 6l-1 7h-13" />
-                        <path d="M10 10l6 -6" />
-                        <circle cx="10.5" cy="4.5" r=".5" />
-                        <circle cx="15.5" cy="9.5" r=".5" />
-                    </svg>
-                    <h5 class="card-title">Ver Solicitudes de Compra</h5>
-                    <p class="card-text">Ver solicitudes de clientes</p>
-                    <a href="pedidos.php" class="btn btn-primary">Ir a Solicitudes</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="col-xs-12 col-sm-6 col-md-3 cartas">
-        <div class="row center-xs">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-report-analytics"
                         width="100" height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#2c3e50" fill="none"
                         stroke-linecap="round" stroke-linejoin="round">
@@ -176,4 +151,7 @@ if (!isset($_SESSION['id_usuario'])) {
 
 
 </div>
+<br><br><br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br>
 <?php include('footer.php'); ?>

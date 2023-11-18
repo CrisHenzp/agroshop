@@ -120,18 +120,29 @@ foreach ($_SESSION['carrito'] as $producto) {
                         <form action="vaciar_carrito.php" method="post">
                           <button type="submit" name="vaciar_carrito"
                             class="button button-md button-default-outline-2 button-wapasha">Vaciar carrito</button>
-                        </form><a class="button button-md button-primary button-pipaluk"
-                          href="carrito.php">Carrito</a>
+                        </form><a class="button button-md button-primary button-pipaluk" href="carrito.php">Carrito</a>
                       </div>
                     </div>
                   </div>
                 </div><a class="rd-navbar-basket rd-navbar-basket-mobile fl-bigmug-line-shopping198"
-                  href="carrito.php"><span><?php echo $totalCantidad; ?></span></a>
+                  href="carrito.php"><span>
+                    <?php echo $totalCantidad; ?>
+                  </span></a>
                 <!-- RD Navbar Nav-->
                 <ul class="rd-navbar-nav">
                   <li class="rd-nav-item"><a class="rd-nav-link" href="index.php">Inicio</a>
                   </li>
-                  <li class="rd-nav-item"><a class="rd-nav-link" href="venta.php">Productos</a>
+                  <li class="rd-nav-item">
+                    <?php
+                    if (isset($_SESSION['tipo_usuario'])) {
+                      if ($_SESSION['tipo_usuario'] == 1 || $_SESSION['tipo_usuario'] == 2 || $_SESSION['tipo_usuario'] == 3 || $_SESSION['tipo_usuario'] == 4) {
+                        echo '<a class="rd-nav-link" href="venta2.php">Productos</a>';
+                      }
+                    } else {
+                      echo '<a class="rd-nav-link" href="venta.php">Productos</a>'; // Enlace por defecto para usuarios no logeados
+                    }
+                    ?>
+                  </li>
                   </li>
                   <li class="rd-nav-item"><a class="rd-nav-link" href="sobre_nosotros.php">Sobre Nosotros</a>
                   </li>
@@ -167,6 +178,7 @@ foreach ($_SESSION['carrito'] as $producto) {
                     if (isset($_SESSION['tipo_usuario'])) {
                       if ($_SESSION['tipo_usuario'] == 1) { // administrador
                         echo '<h3 class="username text-center">Menú de Administrador</h3>';
+                        echo '<a href="menu_admin.php" class="btn btn-primary btn-block"><b>Menu administrador</b></a>';
                         echo '<a href="datos.usuarios.php" class="btn btn-primary btn-block"><b>Administrar usuarios</b></a>';
                         echo '<a href="datos.productos.php" class="btn btn-primary btn-block"><b>Administrar productos</b></a>';
                       } else if ($_SESSION['tipo_usuario'] == 2) { // productor
@@ -180,7 +192,7 @@ foreach ($_SESSION['carrito'] as $producto) {
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
 
                         //echo '<a href="" class="btn btn-primary btn-block"><b>Ventas Realizadas</b></a>';
-
+                    
                       } else if ($_SESSION['tipo_usuario'] == 3) { // comerciante
                         echo '<h3 class="username text-center">Menú de comerciante</h3>';
                         echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
@@ -188,7 +200,7 @@ foreach ($_SESSION['carrito'] as $producto) {
                         echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>';
 
                         //echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Estado de sus compras</b></a>';
-
+                    
                         echo '<a href="crear.producto.php" class="btn btn-primary btn-block"><b>Mis productos</b></a>';
 
                         echo '<a href="pedidos.php" class="btn btn-primary btn-block"><b>Solicitudes de pedidos</b></a>';
@@ -197,7 +209,7 @@ foreach ($_SESSION['carrito'] as $producto) {
                         //echo '<a href="" class="btn btn-primary btn-block"><b>Ventas Realizadas</b></a>';
                       } else if ($_SESSION['tipo_usuario'] == 4) { // usuario
                         echo '<h3 class="username text-center">Menú de cliente</h3>';
-                        
+
                         echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar perfil</b></a>';
 
                         echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de compra</b></a>';
