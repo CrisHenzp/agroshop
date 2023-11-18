@@ -1,5 +1,15 @@
+<?php include('header.php');?>
+<br><br><br><br>
+<?php
+echo 'Gracias por tu compra';
+?>
+
+<br><br>
 <?php
 
-echo 'Transaccion Realizada <a href="carrito.php">Volver al home</a>';
+echo 'Transaccion Realizada <a href="factura/invoice.php">Ver Factura</a>';
+?>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-echo 'Gracias por tu compra';
+
+<?php include('footer.php'); ?>

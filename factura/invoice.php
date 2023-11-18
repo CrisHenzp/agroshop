@@ -8,7 +8,7 @@
 	$pdf->AddPage();
 
 	# Logo de la empresa formato png #
-	$pdf->Image('./img/logo.png',165,12,35,35,'PNG');
+	$pdf->Image('./img/logo.png',165,16,45,35,'PNG');
 
 	# Encabezado y datos de la empresa #
 	$pdf->SetFont('Arial','B',16);
@@ -23,7 +23,7 @@
 
 	$pdf->Ln(5);
 
-	$pdf->Cell(150,9,iconv("UTF-8", "ISO-8859-1","Direccion San Salvador, El Salvador"),0,0,'L');
+	$pdf->Cell(150,9,iconv("UTF-8", "ISO-8859-1","Direccion: "),0,0,'L');
 
 	$pdf->Ln(5);
 
@@ -44,14 +44,6 @@
 	$pdf->Cell(35,7,iconv("UTF-8", "ISO-8859-1",strtoupper("Factura Nro.")),0,0,'C');
 
 	$pdf->Ln(7);
-
-	$pdf->SetFont('Arial','',10);
-	$pdf->Cell(12,7,iconv("UTF-8", "ISO-8859-1","Cajero:"),0,0,'L');
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(134,7,iconv("UTF-8", "ISO-8859-1","Carlos Alfaro"),0,0,'L');
-	$pdf->SetFont('Arial','B',10);
-	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(35,7,iconv("UTF-8", "ISO-8859-1",strtoupper("1")),0,0,'C');
 
 	$pdf->Ln(10);
 
@@ -75,7 +67,7 @@
 	$pdf->SetTextColor(39,39,51);
 	$pdf->Cell(6,7,iconv("UTF-8", "ISO-8859-1","Dir:"),0,0);
 	$pdf->SetTextColor(97,97,97);
-	$pdf->Cell(109,7,iconv("UTF-8", "ISO-8859-1","San Salvador, El Salvador, Centro America"),0,0);
+	$pdf->Cell(109,7,iconv("UTF-8", "ISO-8859-1",""),0,0);
 
 	$pdf->Ln(9);
 
@@ -100,9 +92,9 @@
 	/*----------  Detalles de la tabla  ----------*/
 	$pdf->Cell(90,7,iconv("UTF-8", "ISO-8859-1","Nombre de producto a vender"),'L',0,'C');
 	$pdf->Cell(15,7,iconv("UTF-8", "ISO-8859-1","7"),'L',0,'C');
-	$pdf->Cell(25,7,iconv("UTF-8", "ISO-8859-1","$10 USD"),'L',0,'C');
-	$pdf->Cell(19,7,iconv("UTF-8", "ISO-8859-1","$0.00 USD"),'L',0,'C');
-	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","$70.00 USD"),'LR',0,'C');
+	$pdf->Cell(25,7,iconv("UTF-8", "ISO-8859-1","$10.000 CLP"),'L',0,'C');
+	$pdf->Cell(19,7,iconv("UTF-8", "ISO-8859-1","$0.00 CLP"),'L',0,'C');
+	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","$10.000 CLP"),'LR',0,'C');
 	$pdf->Ln(7);
 	/*----------  Fin Detalles de la tabla  ----------*/
 
@@ -114,13 +106,13 @@
 	$pdf->Cell(100,7,iconv("UTF-8", "ISO-8859-1",''),'T',0,'C');
 	$pdf->Cell(15,7,iconv("UTF-8", "ISO-8859-1",''),'T',0,'C');
 	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","SUBTOTAL"),'T',0,'C');
-	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","+ $70.00 USD"),'T',0,'C');
+	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","+ $10.000 CLP"),'T',0,'C');
 
 	$pdf->Ln(7);
 
 	$pdf->Cell(100,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
 	$pdf->Cell(15,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
-	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","IVA (13%)"),'',0,'C');
+	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","IVA (19%)"),'',0,'C');
 	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","+ $0.00 USD"),'',0,'C');
 
 	$pdf->Ln(7);
@@ -130,29 +122,23 @@
 
 
 	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","TOTAL A PAGAR"),'T',0,'C');
-	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$70.00 USD"),'T',0,'C');
+	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$10.000 CLP"),'T',0,'C');
 
 	$pdf->Ln(7);
 
 	$pdf->Cell(100,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
 	$pdf->Cell(15,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
 	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","TOTAL PAGADO"),'',0,'C');
-	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$100.00 USD"),'',0,'C');
+	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$10.000 CLP"),'',0,'C');
 
 	$pdf->Ln(7);
 
 	$pdf->Cell(100,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
 	$pdf->Cell(15,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
 	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","CAMBIO"),'',0,'C');
-	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$30.00 USD"),'',0,'C');
+	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$0 CLP"),'',0,'C');
 
 	$pdf->Ln(7);
-
-	$pdf->Cell(100,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
-	$pdf->Cell(15,7,iconv("UTF-8", "ISO-8859-1",''),'',0,'C');
-	$pdf->Cell(32,7,iconv("UTF-8", "ISO-8859-1","USTED AHORRA"),'',0,'C');
-	$pdf->Cell(34,7,iconv("UTF-8", "ISO-8859-1","$0.00 USD"),'',0,'C');
-
 	$pdf->Ln(12);
 
 	$pdf->SetFont('Arial','',9);
