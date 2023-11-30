@@ -71,6 +71,7 @@ if ($usuario['id_tipousuario'] == 2 || $usuario['id_tipousuario'] == 3) { ?>
                                 <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
                                 <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
                             </p>
+                            <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto'];?>">
                             <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
                             <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
                             <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
@@ -114,6 +115,7 @@ if ($usuario['id_tipousuario'] == 4) { ?>
                                 <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
                                 <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
                             </p>
+                            <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto'];?>">
                             <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
                             <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
                             <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
@@ -156,6 +158,7 @@ if ($usuario['id_tipousuario'] == 4) { ?>
                                 <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
                                 <?php echo $producto['usu_nombre'] . ' ' . $producto['usu_apellido']; ?>
                             </p>
+                            <input type="hidden" name="id_producto" value="<?php echo $producto['id_producto'];?>">
                             <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
                             <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
                             <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">

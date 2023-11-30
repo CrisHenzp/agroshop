@@ -3,9 +3,12 @@ include_once 'config/config.php';
 include("header.php");
 
 $usuario = $_SESSION['id_usuario'];
-$query = "SELECT * FROM usuario WHERE id_usuario = '$usuario'";
+$query = "SELECT usuario.*, tipousuario.tus_nombre FROM usuario 
+            INNER JOIN tipousuario ON usuario.id_tipousuario = tipousuario.id_tipousuario 
+            WHERE usuario.id_usuario = '$usuario'";
 $result = mysqli_query($conexion, $query);
 $row = mysqli_fetch_assoc($result);
+
 
 ?>
 <div class="row" style="margin:auto;height: auto">
@@ -65,7 +68,7 @@ $row = mysqli_fetch_assoc($result);
                         <div class="col">
                             <label>tipo usuario:</label>
                             <input disabled type="text" class="form-control" name="direccion"
-                                value="<?php echo $row['id_tipousuario'] ?>" placeholder="tipousuario" required>
+                                value="<?php echo $row['tus_nombre'] ?>" placeholder="tipousuario" required>
                         </div>
                     </div>
                 </div>
@@ -128,22 +131,6 @@ $row = mysqli_fetch_assoc($result);
     </div>
 </div>
 
-<form method="POST" action="actualizar_perfil.php">
-    <label for="contra">Contraseña actual</label>
-    <input type="password" class="form-control" name="contra_actual" required>
-
-    <label for="nueva_contra">Nueva contraseña</label>
-    <input type="password" class="form-control" name="nueva_contra" required>
-
-    <label for="nueva_contra2">Repetir nueva contraseña</label>
-    <input type="password" class="form-control" name="nueva_contra2" required>
-
-    <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario'] ?>">
-
-    <button type="submit" class="btn btn-sm btn-primary" style="font-size:10px">
-        <i class="fa fa-floppy-o fa-2x" style="color:white;"> Cambiar contraseña</i>
-    </button>
-</form>
 <?php
 include("footer.php");
 ?>

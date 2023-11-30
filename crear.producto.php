@@ -37,9 +37,9 @@ $id_usuario = $_SESSION['id_usuario'];
         <form action="guardar_producto.php" method="post" enctype="multipart/form-data">
             <div class="form-group" style="text-align:left;font-weight:bold">
                 <label style="margin-top:1%">Nombre del fruto</label>
-                <input type="text" name="nombre_pro" class="form-control" placeholder="Ej. Naranja de sangre" />
+                <input type="text" name="nombre_pro" class="form-control" placeholder="Ej. Naranja de sangre"  maxlength="50"/>
                 <label style="margin-top:1%">Descripción</label>
-                <textarea type="text" name="descripcion_pro" class="form-control"
+                <textarea type="text" name="descripcion_pro" class="form-control" maxlength="250"
                     placeholder="Ej. Las Naranjas de sangre 
                     tienen pocas semillas y son muy tiernas. Además, tienen un sabor más ácido y un tamaño inferior al de la naranja común"></textarea>
                 <label style="margin-top:1%">Categoria</label>

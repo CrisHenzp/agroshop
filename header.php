@@ -1,4 +1,6 @@
 <?php
+$lifetime = 86400;
+setcookie(session_name(), session_id(), time() + $lifetime);
 session_start();
 
 
@@ -14,7 +16,7 @@ $totalCantidad = 0;
 $totalPrecio = 0.00;
 
 foreach ($_SESSION['carrito'] as $producto) {
-  $totalCantidad += 1; // Asume que la cantidad de cada producto es 1
+  $totalCantidad += $producto['cantidad']; // Asume que la cantidad de cada producto es 1
   $totalPrecio += $producto['pro_precio'];
 }
 ?>
@@ -101,10 +103,6 @@ foreach ($_SESSION['carrito'] as $producto) {
                               </h6>
                               <div>
                                 <div class="group-xs group-inline-middle">
-                                  <div class="table-cart-stepper">
-                                    <input class="form-input" type="number" data-zeros="true" value="1" min="1"
-                                      max="1000">
-                                  </div>
                                   <h6 class="cart-inline-title">$
                                     <?php echo $producto['pro_precio']; ?>
                                   </h6>
