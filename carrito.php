@@ -69,18 +69,19 @@ foreach ($_SESSION['carrito'] as $producto) {
   <div class="text-right">
     <h4>Transporte: $
       <?php $transporte = 7000;
-      echo number_format($transporte, 2); ?>
+      echo number_format($transporte, 0); ?>
     </h4>
     <h4>IVA: $
       <?php $iva = $amount * 0.19;
-      echo number_format($iva, 2); ?>
+      echo number_format($iva, 0); ?>
     </h4>
     <h4>Total: $
-      <?php $total = $amount + $iva + $transporte;
-      echo number_format($total, 2); ?>
+      <?php $totalf = intval($amount + $iva + $transporte);
+      echo number_format($totalf, 0); ?>
     </h4>
     <br>
     <?php
+    
     function get_ws($data, $method, $type, $endpoint)
     {
       $curl = curl_init();
@@ -121,7 +122,7 @@ foreach ($_SESSION['carrito'] as $producto) {
     $baseurl = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
     $url = "https://webpay3g.transbank.cl/"; //Live
     $url = "https://webpay3gint.transbank.cl/"; //Testing
-    $url3 = "http://localhost/agroshop/finish.php";
+    $url3 = "http://localhost/agroshop/pedido.php";
     $action = isset($_GET["action"]) ? $_GET["action"] : 'init';
     $message = null;
     $post_array = false;
@@ -134,7 +135,7 @@ foreach ($_SESSION['carrito'] as $producto) {
     $data = '{
                             "buy_order": "' . $buy_order . '",
                             "session_id": "' . $session_id . '",
-                            "amount": ' . $total . ',
+                            "amount": ' . $totalf . ',
                             "return_url": "' . $return_url . '"
                             }';
     $method = 'POST';
@@ -145,8 +146,8 @@ foreach ($_SESSION['carrito'] as $producto) {
     $url_tbk = $response->url;
     $token = $response->token;
     $submit = 'Pagar';
-    $_SESSION['transaction_data'] = $response;
-    session_write_close()
+    $_SESSION['transaction_data'] = $response; 
+    $_SESSION['totalf'] = $totalf;
     ?>
 
     <?php if (strlen($url_tbk)) { ?>
@@ -173,4 +174,4 @@ foreach ($_SESSION['carrito'] as $producto) {
 <br><br><br><br><br><br><br>
 
 
-<?php include('footer.php'); ?>
+<?php include('footer.php'); session_write_close() ?>

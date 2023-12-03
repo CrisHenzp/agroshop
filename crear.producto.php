@@ -20,11 +20,8 @@ $id_usuario = $_SESSION['id_usuario'];
         var urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('guardado')) {
             swal("¡Producto guardado!", "Tu producto ha sido guardado exitosamente.", "success");
-        }
-    }
-    window.onload = function () {
-        var urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.has('eliminado')) {
+
+        } else (urlParams.has('eliminado')) {
             swal("¡Producto eliminado!", "Tu producto ha sido eliminado exitosamente.", "success");
         }
     }
@@ -37,11 +34,11 @@ $id_usuario = $_SESSION['id_usuario'];
         <form action="guardar_producto.php" method="post" enctype="multipart/form-data">
             <div class="form-group" style="text-align:left;font-weight:bold">
                 <label style="margin-top:1%">Nombre del fruto</label>
-                <input type="text" name="nombre_pro" class="form-control" placeholder="Ej. Naranja de sangre"  maxlength="50"/>
+                <input type="text" name="nombre_pro" class="form-control" placeholder="Ej. Naranja de sangre"
+                    maxlength="10" />
                 <label style="margin-top:1%">Descripción</label>
-                <textarea type="text" name="descripcion_pro" class="form-control" maxlength="250"
-                    placeholder="Ej. Las Naranjas de sangre 
-                    tienen pocas semillas y son muy tiernas. Además, tienen un sabor más ácido y un tamaño inferior al de la naranja común"></textarea>
+                <textarea type="text" name="descripcion_pro" class="form-control" maxlength="100"
+                    placeholder="Ej. Las Naranjas de sangre tienen pocas semillas y son muy tiernas. Además, tienen un sabor más ácido y un tamaño inferior al de la naranja común"></textarea>
                 <label style="margin-top:1%">Categoria</label>
                 <select name="categoria" required>
                     <option value="" disabled selected>Selecciona una categoría</option>
@@ -59,9 +56,9 @@ $id_usuario = $_SESSION['id_usuario'];
                 </select>
                 <label style="margin-top:1%">Precio</label>
                 <input type="number" name="precio_pro" placeholder="Ej.$10000" required>
-                <label style="margin-top:1%" data-zeros="true" value="1" min="1" max="1000">Cantidad (kg) </label>
-                <input type="number" name="stock_pro" placeholder="Ej.100 (kg)" required data-zeros="true" value="1"
-                    min="1" max="1000">
+                <label style="margin-top:1%">Cantidad </label>
+                <input type="number" name="stock_pro" placeholder="Ej.100" required data-zeros="true" value="1" min="1"
+                    max="10000">
                 <label style="margin-top:1%">Imagen</label>
                 <input type="file" class="form-control" name="pro_imgen" required>
                 <button type="submit" name="submit">Guardar Producto</button>
@@ -89,10 +86,8 @@ $id_usuario = $_SESSION['id_usuario'];
             <?php $query = "SELECT producto.*, unit_tipo AS nombre_medida, nombre_tpro AS nombre_tipo FROM producto 
                 INNER JOIN unidad_medida ON producto.id_unit = unidad_medida.id_unit
                 INNER JOIN tipoproducto ON producto.id_tipoproducto = tipoproducto.id_tipoproducto
-                WHERE pro_estado = 1";
-
+                WHERE pro_estado = 1 AND id_usuario = $id_usuario";
             $resultado_productos = mysqli_query($conexion, $query);
-
             while ($producto = mysqli_fetch_assoc($resultado_productos)) { ?>
                 <tr>
                     <td><img src="<?php echo $producto['pro_imagen']; ?>" width="50" height="50"></td>
@@ -106,7 +101,7 @@ $id_usuario = $_SESSION['id_usuario'];
                         <?php echo $producto['nombre_tipo']; ?>
                     </td>
                     <td>
-                        <?php echo $producto['pro_precio']; ?>
+                        <?php echo number_format($producto['pro_precio'], 0, ',', '.'); ?>
                     </td>
                     <td>
                         <?php echo $producto['pro_stock']; ?>

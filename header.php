@@ -1,8 +1,7 @@
 <?php
+session_start();
 $lifetime = 86400;
 setcookie(session_name(), session_id(), time() + $lifetime);
-session_start();
-
 
 if (isset($_SESSION['carrito'])) {
   // Acceder a $_SESSION['carrito']

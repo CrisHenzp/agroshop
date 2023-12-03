@@ -2,6 +2,10 @@
 include_once '../config/config.php';
 session_start();
 
+$subtotal = 0;
+$iva = 0.19;
+$transporte = 7000;
+$totalf= 0;
 $usuario = $_SESSION['id_usuario'];
 $query = "SELECT * FROM usuario WHERE id_usuario = '$usuario'";
 $result = mysqli_query($conexion, $query);
@@ -44,16 +48,21 @@ $pdf->Cell(150, 9, iconv("UTF-8", "ISO-8859-1", "Email: agroshop@correo.com"), 0
 
 $pdf->Ln(10);
 
-date_default_timezone_set('America/Santiago');
-$fecha_actual = date("d/m/Y h:i A");
+
+$query1 = "SELECT * FROM pedido WHERE ped_ref = '".$_REQUEST["dat"]."' ";
+
+$resultado_pedidos = mysqli_query($conexion, $query1);
+
+while ($pedidos = mysqli_fetch_assoc($resultado_pedidos)) {
+
 $pdf->SetFont('Arial', '', 10);
 $pdf->Cell(30, 7, iconv("UTF-8", "ISO-8859-1", "Fecha de emisión:"), 0, 0);
 $pdf->SetTextColor(97, 97, 97);
-$pdf->Cell(116, 7, iconv("UTF-8", "ISO-8859-1", $fecha_actual), 0, 0, 'L');
+$pdf->Cell(116, 7, iconv("UTF-8", "ISO-8859-1", $pedidos['ped_fecha']), 0, 0, 'L');
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->SetTextColor(39, 39, 51);
-$pdf->Cell(35, 7, iconv("UTF-8", "ISO-8859-1", strtoupper("Factura Nro. $factura")), 0, 0, 'C');
-
+$pdf->Cell(35, 7, iconv("UTF-8", "ISO-8859-1", strtoupper("Factura Nro. ".$pedidos['id_pedido'])), 0, 0, 'C');
+}
 $pdf->Ln(7);
 
 $pdf->Ln(10);
@@ -98,17 +107,25 @@ $pdf->Ln(8);
 
 $pdf->SetTextColor(39, 39, 51);
 
+$query = "SELECT a.pdd_nombre, a.pdd_cantidad, a.pdd_precio
+FROM pedidodatos a
+WHERE a.pdd_ref = '".$_REQUEST["dat"]."' ";
 
+$resultado_pedido = mysqli_query($conexion, $query);
 
+while ($pedido = mysqli_fetch_assoc($resultado_pedido)) {
+    
+$cantidadp = $pedido['pdd_cantidad'] * $pedido['pdd_precio'];
 /*----------  Detalles de la tabla  ----------*/
-$pdf->Cell(90, 7, iconv("UTF-8", "ISO-8859-1", "Nombre de producto a vender"), 'L', 0, 'C');
-$pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", "7"), 'L', 0, 'C');
-$pdf->Cell(25, 7, iconv("UTF-8", "ISO-8859-1", "$10.000 CLP"), 'L', 0, 'C');
-$pdf->Cell(19, 7, iconv("UTF-8", "ISO-8859-1", "$0.00 CLP"), 'L', 0, 'C');
-$pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "$10.000 CLP"), 'LR', 0, 'C');
+$pdf->Cell(90, 7, iconv("UTF-8", "ISO-8859-1", $pedido['pdd_nombre']), 'L', 0, 'C');
+$pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", $pedido['pdd_cantidad']), 'L', 0, 'C');
+$pdf->Cell(25, 7, iconv("UTF-8", "ISO-8859-1", "$ " .number_format($pedido['pdd_precio'], 0, ',', '.')." CLP"), 'L', 0, 'C');
+$pdf->Cell(19, 7, iconv("UTF-8", "ISO-8859-1", "$ 0.00 CLP"), 'L', 0, 'C');
+$pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "$ ". number_format($cantidadp, 0, ',', '.'). " CLP"), 'LR', 0, 'C');
 $pdf->Ln(7);
 /*----------  Fin Detalles de la tabla  ----------*/
-
+$subtotal += $pedido['pdd_precio'] * $pedido['pdd_cantidad'];
+}
 
 
 $pdf->SetFont('Arial', 'B', 9);
@@ -117,37 +134,37 @@ $pdf->SetFont('Arial', 'B', 9);
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "SUBTOTAL"), 'T', 0, 'C');
-$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $10.000 CLP"), 'T', 0, 'C');
+$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $ ".number_format($subtotal, 0, ',', '.'). "CLP"), 'T', 0, 'C');
 
 $pdf->Ln(7);
 
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "TRANSPORTE"), '', 0, 'C');
-$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $7.000 CLP"), '', 0, 'C');
+$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+$ ". number_format($transporte, 0, ',', '.')." CLP"), '', 0, 'C');
 
 $pdf->Ln(7);
-
+$ivaf = $subtotal * $iva;
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "IVA (19%)"), '', 0, 'C');
-$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $000 CLP"), '', 0, 'C');
+$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $ $ivaf  CLP"), '', 0, 'C');
 
 $pdf->Ln(7);
 
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 
-
+$totalf = $subtotal + $transporte + $ivaf;
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "TOTAL A PAGAR"), 'T', 0, 'C');
-$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "$10.000 CLP"), 'T', 0, 'C');
+$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", number_format($totalf, 0, ',', '.')."CLP"), 'T', 0, 'C');
 
 $pdf->Ln(7);
 
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "TOTAL PAGADO"), '', 0, 'C');
-$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "$10.000 CLP"), '', 0, 'C');
+$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", number_format($totalf, 0, ',', '.')."CLP"), '', 0, 'C');
 
 $pdf->Ln(7);
 $pdf->Ln(12);

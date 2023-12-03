@@ -32,7 +32,7 @@ while ($producto = mysqli_fetch_assoc($resultado)) {
               <?php echo $producto['pro_nombre']; ?>
             </h4>
             <p class="price">$
-              <?php echo $producto['pro_precio']; ?> x
+              <?php echo number_format($producto['pro_precio'], 0, ',', '.'); ?> x
               <?php echo $producto['unit_tipo']; ?>
             </p>
             <p>
