@@ -26,7 +26,7 @@ $pdf->Image('./img/logo.png', 165, 16, 45, 35, 'PNG');
 # Encabezado y datos de la empresa #
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->SetTextColor(32, 100, 210);
-$pdf->Cell(150, 10, iconv("UTF-8", "ISO-8859-1", strtoupper("Agroshop")), 0, 0, 'L');
+$pdf->Cell(150, 10, iconv("UTF-8", "ISO-8859-1", strtoupper("Factura")), 0, 0, 'L');
 
 $pdf->Ln(9);
 

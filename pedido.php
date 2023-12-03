@@ -35,6 +35,23 @@ if ($result) {
     $sql2 = "INSERT INTO pedido (ped_ref, id_usuario, ped_estadop ,ped_totalf, ped_fecha, ped_token, ped_estado) VALUES ('$ref', '$id_usuario', '$pedestado', '$totalf', '$fecha', '$token', '$estado')";
     $result2 = mysqli_query($conexion, $sql2);
 }
+foreach ($_SESSION['carrito'] as $producto) {
+    $id_producto = $producto['id_producto'];
+    $cantidad = $producto['cantidad'];
+
+    // Consulta para obtener la cantidad actual en stock
+    $sql_stock = "SELECT pro_stock FROM producto WHERE id_producto = '$id_producto'";
+    $result_stock = mysqli_query($conexion, $sql_stock);
+    $row = mysqli_fetch_assoc($result_stock);
+    $stock_actual = $row['pro_stock'];
+
+    // Descontar la cantidad comprada del stock actual
+    $nuevo_stock = $stock_actual - $cantidad;
+
+    // Actualizar la cantidad en stock en la base de datos
+    $sql_update = "UPDATE producto SET pro_stock = '$nuevo_stock' WHERE id_producto = '$id_producto'";
+    $result_update = mysqli_query($conexion, $sql_update);
+}
 
 $_SESSION['carrito'] = array();
 
