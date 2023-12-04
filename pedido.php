@@ -1,13 +1,16 @@
 <?php include_once 'config/config.php';
 include('header.php');
 
+if (!isset($_SESSION['id_usuario'])) {
+    $id_usuario = $_GET['id_usuario'];
+}
+
 $str = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 $password = "";
 for ($i = 0; $i < 5; $i++) {
     $password .= substr($str, rand(0, 64), 1);
 }
 $ref = $password;
-
 foreach ($_SESSION['carrito'] as $producto) {
     $id_producto = $producto['id_producto'];
     $pro_nombre = $producto['pro_nombre'];
@@ -19,17 +22,14 @@ foreach ($_SESSION['carrito'] as $producto) {
     $result = mysqli_query($conexion, $sql);
 
 }
-if (isset($_SESSION['transaction_data'])) {
-    $transaction_data = $_SESSION['transaction_data'];
 
-}
 // Después de ejecutar la primera consulta de inserción
 if ($result) {
     $id_usuario = $_SESSION['id_usuario'];
     $pedestado = 1;
     $totalf = $_SESSION['totalf'];
     $fecha = date('Y-m-d H:i:s');
-    $token = $_SESSION['transaction_data']->token;
+    $token = filter_input(INPUT_POST, 'token_ws');
     $estado = 1;
     // Ahora puedes usar $id_pedidodatos en tu segunda consulta de inserción
     $sql2 = "INSERT INTO pedido (ped_ref, id_usuario, ped_estadop ,ped_totalf, ped_fecha, ped_token, ped_estado) VALUES ('$ref', '$id_usuario', '$pedestado', '$totalf', '$fecha', '$token', '$estado')";
@@ -57,7 +57,60 @@ if ($result) {
 
 $_SESSION['carrito'] = array();
 ?>
-
+<style>
+.container{   
+  display: grid;
+    place-content: center;
+    height: 300px;
+}
+.cargando{
+    width: 120px;
+    height: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+  margin: 0 auto; 
+}
+.texto-cargando{ 
+  padding-top:20px
+}
+.cargando span{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.pelotas {
+    width: 30px;
+    height: 30px;
+    background-color: #3c6a36;
+    animation: salto .5s alternate
+    infinite;
+  border-radius: 50%  
+}
+.pelotas:nth-child(2) {
+    animation-delay: .18s;
+}
+.pelotas:nth-child(3) {
+    animation-delay: .37s;
+}
+@keyframes salto {
+    from {
+        transform: scaleX(1.25);
+    }
+    to{
+        transform: 
+        translateY(-50px) scaleX(1);
+    }
+}
+</style>
+<div class="container">
+  <div class="cargando">
+    <div class="pelotas"></div>
+    <div class="pelotas"></div>
+    <div class="pelotas"></div>
+    <span class="texto-cargando">Cargando...</span>
+  </div>
+</div>
 <script type="text/javascript">
     window.onload = function () {
         setTimeout(function () {
@@ -65,5 +118,4 @@ $_SESSION['carrito'] = array();
         }, 1000);
     }
 </script>
-<br><br><br>
 <?php include('footer.php'); ?>

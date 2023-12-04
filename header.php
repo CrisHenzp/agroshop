@@ -1,7 +1,11 @@
-<?php
-session_start();
-$lifetime = 86400;
-setcookie(session_name(), session_id(), time() + $lifetime);
+<?php session_start();
+
+$lifetime = 60;
+
+setcookie(session_name(), session_id(), time() + $lifetime, '/');
+if (session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 
 if (isset($_SESSION['carrito'])) {
   // Acceder a $_SESSION['carrito']
@@ -188,22 +192,18 @@ foreach ($_SESSION['carrito'] as $producto) {
 
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
 
-                        //echo '<a href="" class="btn btn-primary btn-block"><b>Ventas Realizadas</b></a>';
-                    
                       } else if ($_SESSION['tipo_usuario'] == 3) { // comerciante
                         echo '<h3 class="username text-center">Menú de comerciante</h3>';
                         echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
 
                         echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>';
 
-                        //echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Estado de sus compras</b></a>';
-                    
                         echo '<a href="crear.producto.php" class="btn btn-primary btn-block"><b>Mis productos</b></a>';
 
                         echo '<a href="pedidos.php" class="btn btn-primary btn-block"><b>Solicitudes de pedidos</b></a>';
 
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
-                        //echo '<a href="" class="btn btn-primary btn-block"><b>Ventas Realizadas</b></a>';
+
                       } else if ($_SESSION['tipo_usuario'] == 4) { // usuario
                         echo '<h3 class="username text-center">Menú de cliente</h3>';
 
@@ -211,7 +211,6 @@ foreach ($_SESSION['carrito'] as $producto) {
 
                         echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de compra</b></a>';
 
-                        //echo '<a href="" class="btn btn-primary btn-block"><b>Estado de sus compras</b></a>';
                       }
                     } else {
                       echo '<a href="registrar.php" class="btn btn-primary btn-block"><b>Iniciar sesion</b></a>';

@@ -51,7 +51,7 @@ $id_usuario = $_SESSION['id_usuario'];
                     }
                     ; ?>
                 </td>
-                <td onclick="location.href='factura/invoice.php?dat=<?php echo $pedido['ped_ref']; ?>'"> <a class="btn btn-small "><i class="fa-solid fa-download"></i></a> </td>
+                <td onclick="location.href='factura/invoice.php?dat=<?php echo $pedido['ped_ref']; ?>'"> <a class="btn btn-small "><i class="fa-solid fa-download fa-2x" style="color:#9B9391;"></i></a> </td>
             <?php } ?>
     </table>
 </div>

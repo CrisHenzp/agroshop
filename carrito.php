@@ -119,14 +119,15 @@ foreach ($_SESSION['carrito'] as $producto) {
       //echo $response;
       return json_decode($response);
     }
-    $baseurl = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+
+
     $url = "https://webpay3g.transbank.cl/"; //Live
     $url = "https://webpay3gint.transbank.cl/"; //Testing
     $url3 = "http://localhost/agroshop/pedido.php";
 
     $buy_order = rand();
     $session_id = $_SESSION['id_usuario'];
-    $return_url = $url3;
+    $return_url = $url3. "?id_usuario=" . $session_id;
     $type = "sandbox";
     $data = '{
                             "buy_order": "' . $buy_order . '",
@@ -141,7 +142,7 @@ foreach ($_SESSION['carrito'] as $producto) {
     $url_tbk = $response->url;
     $token = $response->token;
     $submit = 'Pagar';
-    $_SESSION['transaction_data'] = $response->token;
+    
     $_SESSION['totalf'] = $totalf;
     ?>
 

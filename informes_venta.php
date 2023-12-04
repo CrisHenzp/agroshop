@@ -63,7 +63,7 @@ $resultado = mysqli_query($conexion, $sql);
                     ?>
                 </tfoot>
             </table>
-            <a href="factura/invoice2.php" class="btn btn-primary btn-block"><b>Infome</b></a>
+            <a href="factura/invoice2.php" class="btn btn-primary btn-block"><b>Informe</b></a>
         </div>
         <?php
         $busqueda = "SELECT a.pro_nombre, SUM(b.pdd_cantidad) as cantidad

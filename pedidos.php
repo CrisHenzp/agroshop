@@ -24,13 +24,12 @@ $tipousu = $_SESSION['tipo_usuario'];
             <th>Acciones</th>
         </tr>
         <?php
-        $query = $query = "SELECT b.id_pedido, b.ped_fecha, b.ped_totalf, b.id_usuario, a.id_producto, c.usu_nombre, c.usu_apellido
+        $query = "SELECT a.pdd_total, b.id_pedido, b.ped_fecha, c.usu_nombre, c.usu_apellido, b.ped_ref
         FROM pedidodatos a
         INNER JOIN pedido b ON a.pdd_ref = b.ped_ref 
         INNER JOIN usuario c ON b.id_usuario = c.id_usuario
         INNER JOIN producto d ON a.id_producto = d.id_producto
-        INNER JOIN usuario e ON d.id_usuario = e.id_usuario
-        WHERE c.id_tipousuario = $tipousu AND a.id_producto = d.id_producto
+        WHERE d.id_usuario = $id_usuario AND a.id_producto = d.id_producto
         GROUP BY b.ped_ref";
 
         $resultado_pedido = mysqli_query($conexion, $query);
@@ -43,7 +42,7 @@ $tipousu = $_SESSION['tipo_usuario'];
                     <?php echo $pedido['ped_fecha']; ?>
                 </td>
                 <td>
-                    <?php echo number_format($pedido['ped_totalf'], 0, ',', '.'); ?>
+                    <?php echo number_format($pedido['pdd_total'], 0, ',', '.'); ?>
                 </td>
                 <td>
                     <?php echo $pedido['usu_nombre'] . ' ' . $pedido['usu_apellido']; ?>
@@ -59,7 +58,7 @@ $tipousu = $_SESSION['tipo_usuario'];
                 <td>
                     <a title="Guardar estado" href="" class="btn "><i style="color:#629A31;"
                             class="fa fa-floppy-o fa-2x"></i> </a>
-                    <a href="" class="btn btn-small "><i class="fa-solid fa-download fa-2x" style="color:#9B9391;"></i></a>
+                    <a class="btn btn-small" onclick="location.href='factura/invoice3.php?dat=<?php echo $pedido['ped_ref']; ?>'" ><i class="fa-solid fa-download fa-2x" style="color:#9B9391;"></i></a>
                 </td>
             </tr>
         <?php } ?>
