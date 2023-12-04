@@ -75,7 +75,7 @@ $pdf->Cell(60, 7, iconv("UTF-8", "ISO-8859-1", $row['usu_nombre']. ' ' .$row['us
 $pdf->SetTextColor(39, 39, 51);
 $pdf->Cell(8, 7, iconv("UTF-8", "ISO-8859-1", "RUT: "), 0, 0, 'L');
 $pdf->SetTextColor(97, 97, 97);
-$pdf->Cell(60, 7, iconv("UTF-8", "ISO-8859-1", $row['usu_rut']), 0, 0, 'L');
+$pdf->Cell(60, 7, iconv("UTF-8", "ISO-8859-1", " ".$row['usu_rut']), 0, 0, 'L');
 $pdf->SetTextColor(39, 39, 51);
 $pdf->Cell(7, 7, iconv("UTF-8", "ISO-8859-1", "Tel: "), 0, 0, 'L');
 $pdf->SetTextColor(97, 97, 97);
@@ -148,7 +148,7 @@ $ivaf = $subtotal * $iva;
 $pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), '', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "IVA (19%)"), '', 0, 'C');
-$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $ $ivaf  CLP"), '', 0, 'C');
+$pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", "+ $".number_format($ivaf , 0, ',', '.') ."CLP"), '', 0, 'C');
 
 $pdf->Ln(7);
 

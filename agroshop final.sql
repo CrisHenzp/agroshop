@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2023 a las 07:08:41
+-- Tiempo de generación: 04-12-2023 a las 01:19:02
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -72,8 +72,17 @@ CREATE TABLE `pedido` (
 --
 
 INSERT INTO `pedido` (`id_pedido`, `ped_ref`, `id_usuario`, `ped_estadop`, `ped_totalf`, `ped_fecha`, `ped_token`, `ped_estado`) VALUES
-(34, 'D3vBS', 21, '1', '36333', '2023-12-02', '01ab3991b18d0f14624b8edac9cd778126778b9b41c0c8d0da922bd272a72fbf', 1),
-(35, 'oUNL', 21, '1', '14140', '2023-12-02', '01ab9514caefcd5fe1ea97dad882577f3d1f667cfb8cf3d4cea96ab7024c77c1', 1);
+(36, 'ftXU', 28, '1', '18947', '2023-12-02', '01abbfd320daba33499e233e219001c84b956058dc959eb66dead84090efb226', 1),
+(49, 'tOHVu', 27, '1', '491187', '2023-12-04', '01abe3bfb3e9684724446ae83a1a82ee545df49d6659e9801782dd07c3781b32', 1),
+(50, 'tnfEl', 25, '1', '522115', '2023-12-04', '01ab9c613095a10a804e618910fb9a03bda3c5faf5b7c2530f8583aa7fea116a', 1),
+(51, 'K6dXS', 25, '1', '724379', '2023-12-04', '01abe407be81952e79345b08810c481f83c676f6407a01bee2a62e06029733f4', 1),
+(52, 'RelN', 26, '1', '1026187', '2023-12-04', '01ab92a574460b9727e5659b16b5d15cbfdb01c60480fb9cbd21f97914a714b7', 1),
+(53, 'Mh4nm', 27, '1', '557172', '2023-12-04', '01ab2d69a2ddd63aaff48961583f57c2a2cef01a97b9bfffb1d7b154a08cfc02', 1),
+(54, 'BP9sx', 28, '1', '42200', '2023-12-04', '01abdb5bc7efd302b89948408b9e756a5ee4a36c1838694539acc66df012ee6d', 1),
+(55, 'NKSrq', 29, '1', '41010', '2023-12-04', '01abd688b73c969122e7ee1e905fc2fc8d27c7b505c98307ae23984b75bcbc67', 1),
+(56, 'bIK5k', 29, '1', '16567', '2023-12-04', '01abc29778a0fbcef18e7199697a6201038b615ed55e37b5116e0178b1e6b3dc', 1),
+(57, 'BL353', 25, '1', '235480', '2023-12-04', '01ab41b89fa6f2ab5650395cf7ceff3e344d21927c933a9172c905154ea781af', 1),
+(58, 'VwvAH', 29, '1', '11581', '2023-12-04', '01ab2fdfd56c0a348930d5da93f486044b7c0384f8bee9bf833c3883b5f7199d', 1);
 
 -- --------------------------------------------------------
 
@@ -97,11 +106,38 @@ CREATE TABLE `pedidodatos` (
 --
 
 INSERT INTO `pedidodatos` (`id_pedidodatos`, `pdd_ref`, `id_producto`, `pdd_nombre`, `pdd_precio`, `pdd_cantidad`, `pdd_total`, `pdd_estado`) VALUES
-(36, 'D3vBS', 38, 'Piña', '1950', '2', '3900', 1),
-(37, 'D3vBS', 39, 'Sandia ', '4190', '4', '16760', 1),
-(38, 'D3vBS', 40, 'Melones ', '3990', '1', '3990', 1),
-(39, 'oUNL', 37, 'Mandarinas', '2200', '1', '2200', 1),
-(40, 'oUNL', 41, 'Granada', '1900', '2', '3800', 1);
+(41, 'ftXU', 38, 'Piña', '1950', '3', '5850', 1),
+(42, 'ftXU', 39, 'Sandia ', '4190', '1', '4190', 1),
+(62, 'tOHVu', 27, 'Naranjas', '128990', '1', '128990', 1),
+(63, 'tOHVu', 31, 'Manzanas ', '25990', '3', '77970', 1),
+(64, 'tOHVu', 33, 'Peras ', '199920', '1', '199920', 1),
+(65, 'tnfEl', 27, 'Naranjas', '128990', '1', '128990', 1),
+(66, 'tnfEl', 33, 'Peras ', '199920', '1', '199920', 1),
+(67, 'tnfEl', 31, 'Manzanas ', '25990', '4', '103960', 1),
+(68, 'K6dXS', 28, 'Platanos', '96000', '1', '96000', 1),
+(69, 'K6dXS', 33, 'Peras ', '199920', '2', '399840', 1),
+(70, 'K6dXS', 30, 'Melon', '21400', '5', '107000', 1),
+(71, 'RelN', 29, 'Uvas', '179280', '2', '358560', 1),
+(72, 'RelN', 31, 'Manzanas ', '25990', '5', '129950', 1),
+(73, 'RelN', 32, 'Mandarinas', '29400', '5', '147000', 1),
+(74, 'RelN', 28, 'Platanos', '96000', '1', '96000', 1),
+(75, 'RelN', 34, 'Peras', '24990', '5', '124950', 1),
+(76, 'Mh4nm', 30, 'Melon', '21400', '5', '107000', 1),
+(77, 'Mh4nm', 31, 'Manzanas ', '25990', '4', '103960', 1),
+(78, 'Mh4nm', 32, 'Mandarinas', '29400', '6', '176400', 1),
+(79, 'Mh4nm', 34, 'Peras', '24990', '3', '74970', 1),
+(80, 'BP9sx', 38, 'Piña', '1950', '6', '11700', 1),
+(81, 'BP9sx', 35, 'Frutillas ', '4190', '2', '8380', 1),
+(82, 'BP9sx', 41, 'Granada', '1900', '5', '9500', 1),
+(83, 'NKSrq', 39, 'Sandia ', '4190', '2', '8380', 1),
+(84, 'NKSrq', 37, 'Mandarinas', '2200', '4', '8800', 1),
+(85, 'NKSrq', 41, 'Granada', '1900', '6', '11400', 1),
+(86, 'bIK5k', 38, 'Piña', '1950', '1', '1950', 1),
+(87, 'bIK5k', 35, 'Frutillas ', '4190', '1', '4190', 1),
+(88, 'bIK5k', 41, 'Granada', '1900', '1', '1900', 1),
+(89, 'BL353', 28, 'Platanos', '96000', '2', '192000', 1),
+(90, 'VwvAH', 38, 'Piña', '1950', '1', '1950', 1),
+(91, 'VwvAH', 41, 'Granada', '1900', '1', '1900', 1);
 
 -- --------------------------------------------------------
 
@@ -128,21 +164,21 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `pro_imagen`, `pro_nombre`, `pro_descripcion`, `pro_precio`, `pro_stock`, `pro_tipo`, `pro_estado`, `id_usuario`, `id_unit`, `id_tipoproducto`) VALUES
-(27, 'imagenes/fotonoticia_20180508110600_1200.jpg', 'Naranjas', 'Las Naranjas estan en pallet de 112 kg aprox. y esta compuesto por 8 cajas de 14 kg cada una.', '128990', '1200', '1', 1, 22, 3, 1),
-(28, 'imagenes/564704609_174935756_1706x960.webp', 'Platanos', 'Los platanos estan en pallet de 184 kg aprox. y esta compuesto por 8 cajas de 23 kg cada una.', '96000', '1200', '1', 1, 22, 3, 1),
-(29, 'imagenes/a580f165-4fdf-4eba-8824-ac6db1a29525.webp', 'Uvas', 'Las uvas estan en pallet de 72 kg aprox. y esta compuesto por 8 cajas de 9 kg cada una.', '179280', '1200', '1', 1, 22, 3, 1),
-(30, 'imagenes/120297559_1639899092843362_5224770539628615895_n.jpg', 'Melon', 'Los Melones estan en pallet de 136 kg aprox. y esta compuesto por 8 cajas de 17 kg cada una.', '21400', '800', '1', 1, 23, 5, 1),
-(31, 'imagenes/manzana.webp', 'Manzanas ', 'Las Manzanas estan en cajas de 14kg cada una.', '25990', '700', '1', 1, 23, 5, 1),
-(32, 'imagenes/7834734F-AD1A-405C-A132-0A8C7D800D1C.jpeg', 'Mandarinas', 'Las Mandarinas estan en cajas de 14kg cada una.', '29400', '800', '1', 1, 23, 5, 1),
-(33, 'imagenes/Pera-Verde-Caja-14-Kg.webp', 'Peras ', 'Las Peras estan en pallet de 112 kg aprox. y esta compuesto por 8 cajas de 14 kg cada una.', '199920', '1200', '1', 1, 24, 3, 1),
-(34, 'imagenes/Pera-Verde-Caja-14-Kg.webp', 'Peras', 'Las Peras estan en cajas de 14 kg cada una.', '24990', '700', '1', 1, 24, 5, 1),
-(35, 'imagenes/bandeja-frutilla.jpg', 'Frutillas ', 'Frutillas sin imperfecciones, se entregan en bolsa', '4190', '200', '2', 1, 25, 2, 1),
+(27, 'imagenes/fotonoticia_20180508110600_1200.jpg', 'Naranjas', 'Las Naranjas estan en pallet de 112 kg aprox. y esta compuesto por 8 cajas de 14 kg cada una.', '128990', '1198', '1', 1, 22, 3, 1),
+(28, 'imagenes/564704609_174935756_1706x960.webp', 'Platanos', 'Los platanos estan en pallet de 184 kg aprox. y esta compuesto por 8 cajas de 23 kg cada una.', '96000', '1196', '1', 1, 22, 3, 1),
+(29, 'imagenes/a580f165-4fdf-4eba-8824-ac6db1a29525.webp', 'Uvas', 'Las uvas estan en pallet de 72 kg aprox. y esta compuesto por 8 cajas de 9 kg cada una.', '179280', '1198', '1', 1, 22, 3, 1),
+(30, 'imagenes/120297559_1639899092843362_5224770539628615895_n.jpg', 'Melon', 'Los Melones estan en pallet de 136 kg aprox. y esta compuesto por 8 cajas de 17 kg cada una.', '21400', '790', '1', 1, 23, 5, 1),
+(31, 'imagenes/manzana.webp', 'Manzanas ', 'Las Manzanas estan en cajas de 14kg cada una.', '25990', '684', '1', 1, 23, 5, 1),
+(32, 'imagenes/7834734F-AD1A-405C-A132-0A8C7D800D1C.jpeg', 'Mandarinas', 'Las Mandarinas estan en cajas de 14kg cada una.', '29400', '789', '1', 1, 23, 5, 1),
+(33, 'imagenes/Pera-Verde-Caja-14-Kg.webp', 'Peras ', 'Las Peras estan en pallet de 112 kg aprox. y esta compuesto por 8 cajas de 14 kg cada una.', '199920', '1196', '1', 1, 24, 3, 1),
+(34, 'imagenes/Pera-Verde-Caja-14-Kg.webp', 'Peras', 'Las Peras estan en cajas de 14 kg cada una.', '24990', '692', '1', 1, 24, 5, 1),
+(35, 'imagenes/bandeja-frutilla.jpg', 'Frutillas ', 'Frutillas sin imperfecciones, se entregan en bolsa', '4190', '196', '2', 1, 25, 2, 1),
 (36, 'imagenes/fotonoticia_20180508110600_1200.jpg', 'Naranjas ', 'Naranjas con imperfecciones, se entregan en envase de plastico.', '2590', '100', '2', 1, 25, 2, 1),
-(37, 'imagenes/7834734F-AD1A-405C-A132-0A8C7D800D1C.jpeg', 'Mandarinas', 'Mandarinas imperfectas, se entregan en envase plastico', '2200', '150', '2', 1, 25, 2, 1),
-(38, 'imagenes/Piasencaja-5b368acfc9e77c001a59d5ea.jpg', 'Piña', 'Piña por unidad', '1950', '100', '2', 1, 26, 1, 1),
-(39, 'imagenes/pexels-engin-akyurt-2894205.jpg', 'Sandia ', 'Sandia ', '4190', '150', '2', 1, 26, 1, 1),
+(37, 'imagenes/7834734F-AD1A-405C-A132-0A8C7D800D1C.jpeg', 'Mandarinas', 'Mandarinas imperfectas, se entregan en envase plastico', '2200', '146', '2', 1, 25, 2, 1),
+(38, 'imagenes/Piasencaja-5b368acfc9e77c001a59d5ea.jpg', 'Piña', 'Piña por unidad', '1950', '91', '2', 1, 26, 1, 1),
+(39, 'imagenes/pexels-engin-akyurt-2894205.jpg', 'Sandia ', 'Sandia ', '4190', '148', '2', 1, 26, 1, 1),
 (40, 'imagenes/120297559_1639899092843362_5224770539628615895_n.jpg', 'Melones ', '2 MELONES X $3990\r\n', '3990', '120', '2', 1, 26, 1, 1),
-(41, 'imagenes/840_560.jpg', 'Granada', 'Granada x kilo', '1900', '120', '2', 1, 27, 2, 1);
+(41, 'imagenes/840_560.jpg', 'Granada', 'Granada x kilo', '1900', '106', '2', 1, 27, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -234,9 +270,6 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id_usuario`, `usu_nombre`, `usu_apellido`, `usu_rut`, `usu_email`, `usu_pass`, `usu_usuario`, `usu_telefono`, `usu_direccion`, `id_tipousuario`, `usu_estado`) VALUES
 (1, 'admin', 'admin', '21213231-2', 'a@a.com', '1234', 'admin', '123456789', 'a', 1, 1),
-(19, 'productor', 'productor', '21740432-4', 'productor@empresa.com', '1234', 'productor', '912345678', 'direccion 123', 2, 1),
-(20, 'comerciante', 'comerciante', '21543978-2', 'comerciante@empresa.com', '1234', 'comerciante', '912345678', 'direccion 111', 3, 1),
-(21, 'cliente', 'cliente', '13244978-1', 'cliente@gmail.com', '1234', 'cliente', '912345678', 'direccion 123', 4, 1),
 (22, 'Alejandro', 'Flores ', '218458423-2', 'alejandro21@gmail.com', '1234', 'alejandro', '987654321', 'el manzano 421', 2, 1),
 (23, 'Kevin ', 'Lopez', '22423765-2', 'kevin1@gmail.com', '1234', 'kevin', '987654321', 'el manzano 543', 2, 1),
 (24, 'Nicolas ', 'Quilondran', '12598543-2', 'nicolas2@gmail.com', '1234', 'nicolas', '987654321', 'el manzano 1241', 2, 1),
@@ -333,13 +366,13 @@ ALTER TABLE `observacion`
 -- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT de la tabla `pedidodatos`
 --
 ALTER TABLE `pedidodatos`
-  MODIFY `id_pedidodatos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id_pedidodatos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`

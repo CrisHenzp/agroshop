@@ -81,7 +81,7 @@ foreach ($_SESSION['carrito'] as $producto) {
     </h4>
     <br>
     <?php
-    
+
     function get_ws($data, $method, $type, $endpoint)
     {
       $curl = curl_init();
@@ -123,14 +123,10 @@ foreach ($_SESSION['carrito'] as $producto) {
     $url = "https://webpay3g.transbank.cl/"; //Live
     $url = "https://webpay3gint.transbank.cl/"; //Testing
     $url3 = "http://localhost/agroshop/pedido.php";
-    $action = isset($_GET["action"]) ? $_GET["action"] : 'init';
-    $message = null;
-    $post_array = false;
 
-    $message .= 'init';
     $buy_order = rand();
     $session_id = $_SESSION['id_usuario'];
-    $return_url = $url3 . "?action=getResult";
+    $return_url = $url3;
     $type = "sandbox";
     $data = '{
                             "buy_order": "' . $buy_order . '",
@@ -142,11 +138,10 @@ foreach ($_SESSION['carrito'] as $producto) {
     $endpoint = '/rswebpaytransaction/api/webpay/v1.0/transactions';
 
     $response = get_ws($data, $method, $type, $endpoint);
-    $message .= print_r($response, TRUE);
     $url_tbk = $response->url;
     $token = $response->token;
     $submit = 'Pagar';
-    $_SESSION['transaction_data'] = $response; 
+    $_SESSION['transaction_data'] = $response->token;
     $_SESSION['totalf'] = $totalf;
     ?>
 
@@ -174,4 +169,4 @@ foreach ($_SESSION['carrito'] as $producto) {
 <br><br><br><br><br><br><br>
 
 
-<?php include('footer.php'); session_write_close() ?>
+<?php include('footer.php'); ?>
