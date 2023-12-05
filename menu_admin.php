@@ -1,31 +1,27 @@
-<?php include('header.php'); 
+<?php include('header.php');
 
 // Comprobar si el usuario ha iniciado sesión
 if (!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
     header('Location: registrar.php');
     exit;
-  }
-  
-  // Comprobar si el usuario es un administrador
-  if ($_SESSION['tipo_usuario'] != 1) {
+}
+
+// Comprobar si el usuario es un administrador
+if ($_SESSION['tipo_usuario'] != 1) {
     // El usuario no es un administrador, redirigir a la página de inicio
     header('Location: index.php');
     exit;
-  } else if ($_SESSION['tipo_usuario'] == 2) {
+} else if ($_SESSION['tipo_usuario'] == 2) {
     header('Location: index.php');
-  
-  } else if ($_SESSION['tipo_usuario'] == 3) {
+
+} else if ($_SESSION['tipo_usuario'] == 3) {
     header('Location: index.php');
-  
-  } else if ($_SESSION['tipo_usuario'] == 4) {
+
+} else if ($_SESSION['tipo_usuario'] == 4) {
     header('Location: index.php');
     exit;
-  }
-
-
-
-
+}
 
 ?>
 <br><br>
@@ -33,9 +29,7 @@ if (!isset($_SESSION['id_usuario'])) {
 <div class="admin-menu">
     <h2>Menu de Administrador</h2>
 </div>
-
 <div class="row center-xs around-xs grupocartas">
-
     <div class="col-xs-12 col-sm-6 col-md-3 cartas">
         <div class="row center-xs">
             <div class="card" style="width: 18rem;">
@@ -71,33 +65,11 @@ if (!isset($_SESSION['id_usuario'])) {
                     </svg>
                     <h5 class="card-title">Informes de Venta</h5>
                     <p class="card-text">Administración de informes</p>
-                    <a href="paginas/iconos.html" class="btn btn-primary">Ir a Informes</a>
+                    <a href="informes_venta_admin.php" class="btn btn-primary">Ir a Informes</a>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <div class="col-xs-12 col-sm-6 col-md-3 cartas">
-        <div class="row center-xs">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet" width="100"
-                        height="100" viewBox="0 0 24 24" stroke-width="0.5" stroke="#2c3e50" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path
-                            d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
-                        <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
-                    </svg>
-                    <h5 class="card-title">Pagos</h5>
-                    <p class="card-text">Todo lo relacionado con los pagos</p>
-                    <a href="#" class="btn btn-primary">Ir a Pagos</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="col-xs-12 col-sm-6 col-md-3 cartas">
         <div class="row center-xs">
             <div class="card" style="width: 18rem;">

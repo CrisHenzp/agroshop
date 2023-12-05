@@ -25,30 +25,12 @@ $pdf->SetMargins(17, 17, 17);
 $pdf->AddPage();
 
 # Logo de la empresa formato png #
-$pdf->Image('./img/logo.png', 150, 12, 55, 35, 'PNG');
+$pdf->Image('./img/logo.png', 120, 2, 55, 35, 'PNG');
 
 # Encabezado y datos de la empresa #
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->SetTextColor(32, 100, 210);
 $pdf->Cell(150, 10, iconv("UTF-8", "ISO-8859-1", strtoupper("Informe de ventas")), 0, 0, 'L');
-
-$pdf->Ln(9);
-
-$pdf->SetFont('Arial', '', 10);
-$pdf->SetTextColor(39, 39, 51);
-$pdf->Cell(13, 7, iconv("UTF-8", "ISO-8859-1", "Cliente: " .$row['usu_nombre']. ' ' .$row['usu_apellido']), 0, 0);
-
-$pdf->Ln(5);
-
-$pdf->Cell(8, 7, iconv("UTF-8", "ISO-8859-1", "RUT: ". $row['usu_rut']), 0, 0, 'L');
-
-$pdf->Ln(5);
-
-$pdf->Cell(7, 7, iconv("UTF-8", "ISO-8859-1", "Tel: ".$row['usu_telefono']), 0, 0, 'L');
-
-$pdf->Ln(5);
-
-$pdf->Cell(6, 7, iconv("UTF-8", "ISO-8859-1", "Dir: ".$row['usu_direccion']), 0, 0);
 
 
 $pdf->Ln(10);
@@ -73,6 +55,7 @@ $pdf->SetFont('Arial', '', 8);
 $pdf->SetFillColor(23, 83, 201);
 $pdf->SetDrawColor(23, 83, 201);
 $pdf->SetTextColor(255, 255, 255);
+$pdf->Cell(7, 8, iconv("UTF-8", "ISO-8859-1", "ID"), 1, 0, 'C', true);
 $pdf->Cell(90, 8, iconv("UTF-8", "ISO-8859-1", "Descripción"), 1, 0, 'C', true);
 $pdf->Cell(15, 8, iconv("UTF-8", "ISO-8859-1", "Cant."), 1, 0, 'C', true);
 $pdf->Cell(25, 8, iconv("UTF-8", "ISO-8859-1", "Precio"), 1, 0, 'C', true);
@@ -84,17 +67,19 @@ $pdf->Ln(8);
 
 $pdf->SetTextColor(39, 39, 51);
 
-$sql = "SELECT a.pdd_nombre, SUM(a.pdd_cantidad) AS cantidad, a.pdd_precio, a.pdd_total 
+$sql = "SELECT a.pdd_nombre, SUM(a.pdd_cantidad) AS cantidad2, a.pdd_precio, a.pdd_total, b.id_producto
 FROM pedidodatos a
 INNER JOIN producto b ON a.id_producto = b.id_producto 
-WHERE b.id_usuario = $usuario
-GROUP BY a.pdd_nombre";
+GROUP BY a.pdd_nombre
+ORDER BY b.id_producto
+";
 $resultado = mysqli_query($conexion, $sql); 
 while ($producto = mysqli_fetch_assoc($resultado)) {
-    $totalf = $producto['cantidad'] * $producto['pdd_precio'];
+    $totalf= $producto['cantidad2'] * $producto['pdd_precio'];
 /*----------  Detalles de la tabla  ----------*/
+$pdf->Cell(7, 7, iconv("UTF-8", "ISO-8859-1", $producto['id_producto']), 'L', 0, 'C');
 $pdf->Cell(90, 7, iconv("UTF-8", "ISO-8859-1", $producto['pdd_nombre']), 'L', 0, 'C');
-$pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", $producto['cantidad']), 'L', 0, 'C');
+$pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", $producto['cantidad2']), 'L', 0, 'C');
 $pdf->Cell(25, 7, iconv("UTF-8", "ISO-8859-1", "$ " .number_format($producto['pdd_precio'], 0, ',', '.')." CLP"), 'L', 0, 'C');
 $pdf->Cell(19, 7, iconv("UTF-8", "ISO-8859-1", "$ 0.00 CLP"), 'L', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", "$ ". number_format($totalf, 0, ',', '.'). " CLP"), 'LR', 0, 'C');
@@ -108,7 +93,7 @@ $totalFinal += $totalf;
 $pdf->SetFont('Arial', 'B', 9);
 
 # Impuestos & totales #
-$pdf->Cell(100, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
+$pdf->Cell(107, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(15, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(32, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');
 $pdf->Cell(34, 7, iconv("UTF-8", "ISO-8859-1", ''), 'T', 0, 'C');

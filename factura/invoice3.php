@@ -7,9 +7,6 @@ $iva = 0.19;
 $transporte = 7000;
 $totalf= 0;
 $usuario = $_SESSION['id_usuario'];
-$query = "SELECT * FROM usuario WHERE id_usuario = '$usuario'";
-$result = mysqli_query($conexion, $query);
-$row = mysqli_fetch_assoc($result);
 
 $factura = rand();
 $codec = rand();
@@ -67,6 +64,14 @@ $pdf->Ln(7);
 
 $pdf->Ln(10);
 # datos cliente#
+$query = "SELECT a.*, b.usu_nombre, b.usu_apellido, b.usu_rut, b.usu_telefono, b.usu_direccion
+FROM pedido a
+INNER JOIN usuario b ON b.id_usuario = a.id_usuario
+WHERE ped_ref = '".$_REQUEST["dat"]."'
+";
+$result = mysqli_query($conexion, $query);
+$row = mysqli_fetch_assoc($result);
+
 $pdf->SetFont('Arial', '', 10);
 $pdf->SetTextColor(39, 39, 51);
 $pdf->Cell(13, 7, iconv("UTF-8", "ISO-8859-1", "Cliente: "), 0, 0);

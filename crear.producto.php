@@ -118,7 +118,7 @@ $id_usuario = $_SESSION['id_usuario'];
                         ; ?>
                     </td>
                     <td class="btn">
-                        <a href="editar.producto.php" style="color:green" class="btn col-2 " title="Editar producto">
+                        <a href="editar.producto.php?id=<?php echo $producto['id_producto']; ?>" style="color:green" class="btn col-2 " title="Editar producto">
                             <i class="fa fa-pencil-square-o fa-lg"></i></a>
                         <a href="eliminar_producto.php?id=<?php echo $producto['id_producto']; ?>" style="color:#F07155;"
                             class="btn col-2" title="Eliminar producto de la existencia">

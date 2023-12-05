@@ -1,6 +1,6 @@
 <?php session_start();
 
-$lifetime = 60;
+$lifetime = 3000;
 
 setcookie(session_name(), session_id(), time() + $lifetime, '/');
 if (session_status() == PHP_SESSION_NONE) {
@@ -188,8 +188,6 @@ foreach ($_SESSION['carrito'] as $producto) {
 
                         echo '<a href="crear.producto.php" class="btn btn-primary btn-block"><b>Mis productos</b></a>';
 
-                        echo '<a href="pedidos.php" class="btn btn-primary btn-block"><b>Solicitudes de pedidos</b></a>';
-
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
 
                       } else if ($_SESSION['tipo_usuario'] == 3) { // comerciante
@@ -199,8 +197,6 @@ foreach ($_SESSION['carrito'] as $producto) {
                         echo '<a href="historial.compra.php" class="btn btn-primary btn-block"><b>Historial de Compra</b></a>';
 
                         echo '<a href="crear.producto.php" class="btn btn-primary btn-block"><b>Mis productos</b></a>';
-
-                        echo '<a href="pedidos.php" class="btn btn-primary btn-block"><b>Solicitudes de pedidos</b></a>';
 
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
 

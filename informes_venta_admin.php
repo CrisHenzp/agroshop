@@ -9,18 +9,17 @@ if (!isset($_SESSION['id_usuario'])) {
 }
 $id_usuario = $_SESSION['id_usuario'];
 $totalFinal = 0;
-$sql = "SELECT a.pdd_nombre, SUM(a.pdd_cantidad) AS cantidad, a.pdd_precio, a.pdd_total 
+$sql = "SELECT a.pdd_nombre, SUM(a.pdd_cantidad) AS cantidad2, a.pdd_precio, a.pdd_total, b.id_producto
 FROM pedidodatos a
 INNER JOIN producto b ON a.id_producto = b.id_producto 
-WHERE b.id_usuario = $id_usuario
 GROUP BY a.pdd_nombre
+ORDER BY b.id_producto
 ";
 $resultado = mysqli_query($conexion, $sql);
 ?>
 <script src="https://kit.fontawesome.com/332b6ce5a2.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<br><br>
-
+<br>
 <div class="col-md-10 card card-body mb-5" style="margin:auto;padding:auto;">
     <h2 class="text-center mb-4">Informe de Ventas</h2>
     <div class="container mt-4 row">
@@ -29,6 +28,7 @@ $resultado = mysqli_query($conexion, $sql);
             <table class="table borderless table-striped ">
                 <thead>
                     <tr>
+                        <th>ID producto</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Precio Unitario</th>
@@ -38,10 +38,11 @@ $resultado = mysqli_query($conexion, $sql);
                 <tbody>
                     <?php
                     while ($producto = mysqli_fetch_assoc($resultado)) {
-                        $totalf = $producto['cantidad'] * $producto['pdd_precio'];
+                        $totalf = $producto['cantidad2'] * $producto['pdd_precio'];
                         echo "<tr>";
+                        echo "<td>" . $producto['id_producto'] . "</td>";
                         echo "<td>" . $producto['pdd_nombre'] . "</td>";
-                        echo "<td>" . $producto['cantidad'] . "</td>";
+                        echo "<td>" . $producto['cantidad2'] . "</td>";
                         echo "<td>$" . number_format($producto['pdd_precio'], 0, ',', '.') . "</td>";
                         echo "<td>$" . number_format($totalf, 0, ',', '.') . "</td>";
                         echo "</tr>";
@@ -56,6 +57,7 @@ $resultado = mysqli_query($conexion, $sql);
                     // Verificar si hay resultados antes de mostrar el total final
                     if ($totalFinal !== null) {
                         echo "<tr>";
+                        echo "<td></td>";
                         echo "<td colspan='3'>Total Final</td>";
                         echo "<td>$" . number_format($totalFinal, 0, ',', '.') . "</td>";
                         echo "</tr>";
@@ -66,14 +68,14 @@ $resultado = mysqli_query($conexion, $sql);
                     ?>
                 </tfoot>
             </table>
-            <a href="factura/invoice2.php" class="btn btn-primary btn-block"><b>Informe</b></a>
+            <a href="factura/invoice4.php" class="btn btn-primary btn-block"><b>Informe</b></a>
         </div>
         <?php
         $busqueda = "SELECT a.pro_nombre, SUM(b.pdd_cantidad) as cantidad
         FROM producto a 
         INNER JOIN pedidodatos b ON b.id_producto = a.id_producto
-        WHERE a.id_usuario = $id_usuario
-        GROUP BY a.pro_nombre";
+        GROUP BY a.pro_nombre
+        ORDER BY b.id_producto";
 
         $resultado = mysqli_query($conexion, $busqueda);
 

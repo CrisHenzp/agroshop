@@ -24,13 +24,10 @@ $tipousu = $_SESSION['tipo_usuario'];
             <th>Acciones</th>
         </tr>
         <?php
-        $query = "SELECT a.pdd_total, b.id_pedido, b.ped_fecha, c.usu_nombre, c.usu_apellido, b.ped_ref
-        FROM pedidodatos a
-        INNER JOIN pedido b ON a.pdd_ref = b.ped_ref 
-        INNER JOIN usuario c ON b.id_usuario = c.id_usuario
-        INNER JOIN producto d ON a.id_producto = d.id_producto
-        WHERE d.id_usuario = $id_usuario AND a.id_producto = d.id_producto
-        GROUP BY b.ped_ref";
+        $query = "SELECT *, b.usu_nombre, b.usu_apellido
+        FROM pedido a 
+        INNER JOIN usuario b ON a.id_usuario = b.id_usuario
+        ORDER BY a.id_pedido";
 
         $resultado_pedido = mysqli_query($conexion, $query);
         while ($pedido = mysqli_fetch_assoc($resultado_pedido)) { ?>
@@ -42,26 +39,44 @@ $tipousu = $_SESSION['tipo_usuario'];
                     <?php echo $pedido['ped_fecha']; ?>
                 </td>
                 <td>
-                    <?php echo number_format($pedido['pdd_total'], 0, ',', '.'); ?>
+                    <?php echo number_format($pedido['ped_totalf'], 0, ',', '.'); ?>
                 </td>
                 <td>
                     <?php echo $pedido['usu_nombre'] . ' ' . $pedido['usu_apellido']; ?>
                 </td>
                 <td>
-                    <select name="estado" class="form-control form-control-sm ">
-                        <option value="1" name="default" selected>En proceso</option>
-                        <option value="2" name="2">Enviado</option>
-                        <option value="3" name="3">Entregado</option>
-                        <option value="4" name="4">Cancelado</option>
+                    <select name="ped_estadop" class="form-control form-control-sm"
+                        onchange="cambiarEstado(<?php echo $pedido['id_pedido']; ?>, this.value)">
+                        <option value="1" <?php if ($pedido['ped_estadop'] == 1)
+                            echo 'selected'; ?>>En proceso</option>
+                        <option value="2" <?php if ($pedido['ped_estadop'] == 2)
+                            echo 'selected'; ?>>Enviado</option>
+                        <option value="3" <?php if ($pedido['ped_estadop'] == 3)
+                            echo 'selected'; ?>>Entregado</option>
+                        <option value="4" <?php if ($pedido['ped_estadop'] == 4)
+                            echo 'selected'; ?>>Cancelado</option>
                     </select>
                 </td>
                 <td>
-                    <a title="Guardar estado" href="" class="btn "><i style="color:#629A31;"
-                            class="fa fa-floppy-o fa-2x"></i> </a>
-                    <a class="btn btn-small" onclick="location.href='factura/invoice3.php?dat=<?php echo $pedido['ped_ref']; ?>'" ><i class="fa-solid fa-download fa-2x" style="color:#9B9391;"></i></a>
+                    <a class="btn btn-small"
+                        onclick="location.href='factura/invoice3.php?dat=<?php echo $pedido['ped_ref']; ?>'"><i
+                            class="fa-solid fa-download fa-2x" style="color:#9B9391;"></i></a>
                 </td>
             </tr>
         <?php } ?>
     </table>
 </div>
+<script>
+function cambiarEstado(idPedido, nuevoEstado) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'actualizar_estado.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert('Estado actualizado correctamente');
+        }
+    }
+    xhr.send('idPedido=' + idPedido + '&nuevoEstado=' + nuevoEstado);
+}
+</script>
 <?php include('footer.php'); ?>
