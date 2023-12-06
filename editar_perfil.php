@@ -12,7 +12,7 @@ $row = mysqli_fetch_assoc($result);
 
 ?>
 <div class="row" style="margin:auto;height: auto">
-    <div class="card card-body col-7 mb-5" style="margin-left:2%">
+    <div class="card card-body" style="margin-left:2%">
         <h3>
             <i class='fa fa-address-card-o' style="font-family:Poppins;font-size:30px;font-weight:bold"> Editar
                 perfil</i>
@@ -22,20 +22,25 @@ $row = mysqli_fetch_assoc($result);
             <form method="POST" id="perfil" action="actualizar_perfil.php">
                 <div class="container mt-4" style="font-weight:bold">
                     <div class="row">
-                        <div class="col">
+                        <div class="col-6">
                             <label for="nombre">Nombre</label>
                             <input type="text" class="form-control" name="nombre"
-                                value="<?php echo $row['usu_nombre'] ?>" placeholder="Nombre" required>
+                                value="<?php echo $row['usu_nombre']; ?>" placeholder="Nombre" required>
                         </div>
-                        <div class="col">
+                        <div class="col-6">
                             <label for="apellido">Apellido</label>
                             <input type="text" class="form-control" name="apellido"
-                                value="<?php echo $row['usu_apellido'] ?>" placeholder="Apellido" required>
+                                value="<?php echo $row['usu_apellido']; ?>" placeholder="Apellido" required>
                         </div>
-                        <div class="col">
+                        <div class="col-6">
                             <label for="apellido">Usuario</label>
                             <input type="text" class="form-control" name="usuario"
-                                value="<?php echo $row['usu_usuario'] ?>" placeholder="Usuario" required>
+                                value="<?php echo $row['usu_usuario']; ?>" placeholder="Usuario" required>
+                        </div>
+                        <div class="col-6">
+                            <label>Telefono:</label>
+                            <input type="text" class="form-control" name="Telefono"
+                                value="<?php echo $row['usu_telefono']; ?>" placeholder="Telefono" required>
                         </div>
                     </div>
                 </div>
@@ -43,14 +48,10 @@ $row = mysqli_fetch_assoc($result);
                     <div class="row">
                         <div class="col">
                             <label>Correo electrónico:</label>
-                            <input type="text" class="form-control" name="email" value="<?php echo $row['usu_email'] ?>"
-                                placeholder="email" required>
+                            <input type="text" class="form-control" name="email"
+                                value="<?php echo $row['usu_email']; ?>" placeholder="email" required>
                         </div>
-                        <div class="col">
-                            <label>Telefono:</label>
-                            <input type="text" class="form-control" name="Telefono"
-                                value="<?php echo $row['usu_telefono'] ?>" placeholder="Telefono" required>
-                        </div>
+
                     </div>
                 </div>
 
@@ -59,7 +60,7 @@ $row = mysqli_fetch_assoc($result);
                         <div class="col">
                             <label>Direccion:</label>
                             <input type="text" class="form-control" name="direccion"
-                                value="<?php echo $row['usu_direccion'] ?>" placeholder="Direccion" required>
+                                value="<?php echo $row['usu_direccion']; ?>" placeholder="Direccion" required>
                         </div>
                     </div>
                 </div>
@@ -68,7 +69,7 @@ $row = mysqli_fetch_assoc($result);
                         <div class="col">
                             <label>tipo usuario:</label>
                             <input disabled type="text" class="form-control" name="direccion"
-                                value="<?php echo $row['tus_nombre'] ?>" placeholder="tipousuario" required>
+                                value="<?php echo $row['tus_nombre']; ?>" placeholder="tipousuario" required>
                         </div>
                     </div>
                 </div>
@@ -79,7 +80,7 @@ $row = mysqli_fetch_assoc($result);
                                     class="fa fa-arrow-left fa-2x" style="color:white;"> Volver </i></a>
                         </div>
                         <div class="col">
-                            <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario'] ?>">
+                            <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']; ?>">
                             <button type="submit" class="btn btn-sm btn-primary" style="font-size:10px">
                                 <i class="fa fa-floppy-o fa-2x" style="color:white;"> Actualizar datos</i>
                             </button>
@@ -102,20 +103,20 @@ $row = mysqli_fetch_assoc($result);
                         <div class="col">
                             <label for="contra">Contraseña actual</label>
                             <input type="password" class="form-control" name="contra_actual"
-                                value="<?php echo $row['usu_pass'] ?>" placeholder="Contraseña" required>
+                                value="<?php echo $row['usu_pass']; ?>" placeholder="Contraseña" required >
                         </div>
                         <div class="row">
-                            <div class="col">
+                            <div class="col-sm">
                                 <label for="contra">Nueva contraseña</label>
-                                <input type="password" class="form-control" name="nueva_contra" required>
+                                <input type="password" class="form-control" name="nueva_contra" required style="margin: 12px; ">
                             </div>
-                            <div class="col">
+                            <div class="col-sm">
                                 <label for="nueva_contra2">Repetir nueva contraseña</label>
-                                <input type="password" class="form-control" name="nueva_contra2" required>
+                                <input type="password" class="form-control" name="nueva_contra2" required style="margin: 12px; ">
                             </div>
                         </div>
                     </div>
-                    <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario'] ?>">
+                    <input type="hidden" name="id_usuario" value="<?php echo $row['id_usuario']; ?>">
                     <div class="container">
                         <div class="row">
                             <div class="col mt-5">

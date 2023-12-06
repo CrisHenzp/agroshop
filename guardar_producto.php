@@ -3,8 +3,6 @@ include_once 'config/config.php';
 session_start();
 $id_usuario = $_SESSION['id_usuario'];
 
-
-
 if (isset($_POST['submit'])) {
     $nombre = $_POST['nombre_pro'];
     $descripcion = $_POST['descripcion_pro'];
@@ -23,7 +21,6 @@ if (isset($_POST['submit'])) {
     } else {
         $pro_tipo = 2;
     }
-
 
     // Procesar la imagen
     $pro_imgen = $_FILES['pro_imgen']['name'];

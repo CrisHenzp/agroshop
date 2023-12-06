@@ -113,5 +113,4 @@ if (isset($_POST['actualizar'])) {
     }
 }
 ob_end_flush();
-?>
-<?php include('footer.php'); ?>
+include('footer.php'); ?>

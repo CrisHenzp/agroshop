@@ -1,4 +1,5 @@
-<?php include('header.php');
+<?php ob_start();
+include('header.php');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -168,6 +169,6 @@ foreach ($_SESSION['carrito'] as $producto) {
   </div>
 </div>
 <br><br><br><br><br><br><br>
-
-
-<?php include('footer.php'); ?>
+<?php 
+ob_end_flush();
+include('footer.php'); ?>

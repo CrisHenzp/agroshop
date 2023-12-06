@@ -8,11 +8,8 @@
 <link rel="stylesheet" href="Public/css/bootstrap.css">
 <link rel="stylesheet" href="Public/css/fonts.css">
 <link rel="stylesheet" href="Public/css/style.css">
-<div class="row" style="margin:auto;height: auto;margin-bottom:10%">
-    <div class="col-md-3">
-        <!-- MESSAGES -->
-
-        <!-- add usuarios form-->
+<div class="container">
+    <div class="row" style="margin:auto; height: auto; margin-bottom:10%">
         <div class="card card-body">
             <form action="crud/save.usu.php" method="POST">
                 <div class="form-group" style="text-align:left;font-weight:bold">
@@ -48,70 +45,75 @@
                     name="Guardar">Guardar</button>
             </form>
         </div>
-    </div>
-    <div class="col-md-8 card card-body" style="margin-left:10px width:auto; height: auto;">
-        <table class="table borderless table-striped" style="width:auto; height: auto;">
-            <thead>
-                <tr>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Correo</th>
-                    <th>Telefono</th>
-                    <th>Dirección</th>
-                    <th>Tipo de usuario</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $query = "SELECT a.*, b.tus_nombre AS tipo_usuario
+        <div class="table-responsive-sm card card-body" style="margin:2% ">
+            <h3>Usuarios</h3>
+            <hr>
+            <br>
+            <div>
+                <div class="row" style="overflow-x:auto;">
+                    <table class="table borderless table-striped" style="margin:2% ">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo</th>
+                                <th>Telefono</th>
+                                <th>Dirección</th>
+                                <th>Tipo de usuario</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $query = "SELECT a.*, b.tus_nombre AS tipo_usuario
                 FROM usuario a
                 INNER JOIN tipousuario b ON a.id_tipousuario = b.id_tipousuario
                 WHERE usu_estado = 1";
-                $result_usuarios = mysqli_query($conexion, $query);
+                            $result_usuarios = mysqli_query($conexion, $query);
 
-                while ($row = mysqli_fetch_assoc($result_usuarios)) { ?>
-                    <tr>
-                        <td>
-                            <?php echo $row['usu_nombre']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['usu_usuario']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['usu_apellido']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['usu_email']; ?>
-                        </td>
+                            while($row = mysqli_fetch_assoc($result_usuarios)) { ?>
+                                <tr>
+                                    <td>
+                                        <?php echo $row['usu_nombre']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['usu_usuario']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['usu_apellido']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['usu_email']; ?>
+                                    </td>
 
-                        <td>
-                            <?php echo $row['usu_telefono']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['usu_direccion']; ?>
-                        </td>
-                        <td>
-                            <?php echo $row['tipo_usuario']; ?>
-                        </td>
-                        <td>
-                            <a title="Editar usuario" href="editar.php?id=<?php echo $row['id_usuario'] ?>"
-                                class="btn  col-4">
-                                <i class="fa fa-pencil-square-o fa-2x"></i>
-                            </a>
-                            <a title="Eliminar usuario de la existencia"
-                                href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>" style="color:#F07155"
-                                class="btn  col-4">
-                                <i class="fa fa-trash fa-2x"></i>
-                            </a>
-                        </td>
-                    </tr>
-                <?php } ?>
-            </tbody>
-        </table>
+                                    <td>
+                                        <?php echo $row['usu_telefono']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['usu_direccion']; ?>
+                                    </td>
+                                    <td>
+                                        <?php echo $row['tipo_usuario']; ?>
+                                    </td>
+                                    <td>
+                                        <a title="Editar usuario" href="editar.php?id=<?php echo $row['id_usuario'] ?>"
+                                            class="btn  col-4">
+                                            <i class="fa fa-pencil-square-o fa-2x"></i>
+                                        </a>
+                                        <a title="Eliminar usuario de la existencia"
+                                            href="crud/borrar.usuario.php?id=<?php echo $row['id_usuario'] ?>"
+                                            style="color:#F07155" class="btn  col-4">
+                                            <i class="fa fa-trash fa-2x"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-
-
 <?php include('footer.php'); ?>

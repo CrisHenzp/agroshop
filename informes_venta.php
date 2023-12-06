@@ -2,7 +2,7 @@
 include_once 'config/config.php';
 
 // Comprobar si el usuario ha iniciado sesión
-if (!isset($_SESSION['id_usuario'])) {
+if(!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
     header('Location: registrar.php');
     exit;
@@ -26,46 +26,48 @@ $resultado = mysqli_query($conexion, $sql);
     <div class="container mt-4 row">
         <!-- Tabla de Ventas -->
         <div class="col">
-            <table class="table borderless table-striped ">
-                <thead>
-                    <tr>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
-                        <th>Precio Unitario</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    while ($producto = mysqli_fetch_assoc($resultado)) {
-                        $totalf = $producto['cantidad'] * $producto['pdd_precio'];
-                        echo "<tr>";
-                        echo "<td>" . $producto['pdd_nombre'] . "</td>";
-                        echo "<td>" . $producto['cantidad'] . "</td>";
-                        echo "<td>$" . number_format($producto['pdd_precio'], 0, ',', '.') . "</td>";
-                        echo "<td>$" . number_format($totalf, 0, ',', '.') . "</td>";
-                        echo "</tr>";
-                        $totalFinal += $totalf;
-                    }
+            <div style="overflow-x:auto;">
+                <table class="table borderless table-striped ">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Precio Unitario</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        while($producto = mysqli_fetch_assoc($resultado)) {
+                            $totalf = $producto['cantidad'] * $producto['pdd_precio'];
+                            echo "<tr>";
+                            echo "<td>".$producto['pdd_nombre']."</td>";
+                            echo "<td>".$producto['cantidad']."</td>";
+                            echo "<td>$".number_format($producto['pdd_precio'], 0, ',', '.')."</td>";
+                            echo "<td>$".number_format($totalf, 0, ',', '.')."</td>";
+                            echo "</tr>";
+                            $totalFinal += $totalf;
+                        }
 
-                    ?>
-                    <!-- Agrega más filas según sea necesario -->
-                </tbody>
-                <tfoot>
-                    <?php
-                    // Verificar si hay resultados antes de mostrar el total final
-                    if ($totalFinal !== null) {
-                        echo "<tr>";
-                        echo "<td colspan='3'>Total Final</td>";
-                        echo "<td>$" . number_format($totalFinal, 0, ',', '.') . "</td>";
-                        echo "</tr>";
-                    } else {
-                        // Si no hay resultados, mostrar un mensaje o realizar alguna acción apropiada
-                        echo "<tr><td colspan='4'>No hay productos</td></tr>";
-                    }
-                    ?>
-                </tfoot>
-            </table>
+                        ?>
+                        <!-- Agrega más filas según sea necesario -->
+                    </tbody>
+                    <tfoot>
+                        <?php
+                        // Verificar si hay resultados antes de mostrar el total final
+                        if($totalFinal !== null) {
+                            echo "<tr>";
+                            echo "<td colspan='3'>Total Final</td>";
+                            echo "<td>$".number_format($totalFinal, 0, ',', '.')."</td>";
+                            echo "</tr>";
+                        } else {
+                            // Si no hay resultados, mostrar un mensaje o realizar alguna acción apropiada
+                            echo "<tr><td colspan='4'>No hay productos</td></tr>";
+                        }
+                        ?>
+                    </tfoot>
+                </table>
+            </div>
             <a href="factura/invoice2.php" class="btn btn-primary btn-block"><b>Informe</b></a>
         </div>
         <?php
@@ -78,7 +80,7 @@ $resultado = mysqli_query($conexion, $sql);
         $resultado = mysqli_query($conexion, $busqueda);
 
         $datosProductos = [];
-        while ($producto = mysqli_fetch_assoc($resultado)) {
+        while($producto = mysqli_fetch_assoc($resultado)) {
             $datosProductos[] = [$producto['pro_nombre'], $producto['cantidad']];
         }
 
@@ -86,7 +88,7 @@ $resultado = mysqli_query($conexion, $sql);
         $labels = [];
         $data = [];
 
-        foreach ($datosProductos as $producto) {
+        foreach($datosProductos as $producto) {
             $labels[] = $producto[0]; // Nombre del producto
             $data[] = $producto[1];   // Cantidad del producto
         }

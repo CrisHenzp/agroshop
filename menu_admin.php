@@ -1,4 +1,5 @@
-<?php include('header.php');
+<?php ob_start();
+include('header.php');
 
 // Comprobar si el usuario ha iniciado sesión
 if (!isset($_SESSION['id_usuario'])) {
@@ -14,10 +15,10 @@ if ($_SESSION['tipo_usuario'] != 1) {
     exit;
 } else if ($_SESSION['tipo_usuario'] == 2) {
     header('Location: index.php');
-
+    exit;
 } else if ($_SESSION['tipo_usuario'] == 3) {
     header('Location: index.php');
-
+    exit;
 } else if ($_SESSION['tipo_usuario'] == 4) {
     header('Location: index.php');
     exit;
@@ -126,4 +127,6 @@ if ($_SESSION['tipo_usuario'] != 1) {
 <br><br><br><br><br>
 
 <br><br><br><br><br><br><br><br><br><br>
-<?php include('footer.php'); ?>
+<?php 
+ob_end_flush();
+include('footer.php'); ?>
