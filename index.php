@@ -1,7 +1,6 @@
 <?php include('header.php'); ?>
 
 <body>
-
   <section class="section swiper-container swiper-slider swiper-slider-modern" data-loop="true" data-autoplay="5000"
     data-simulate-touch="true" data-nav="true" data-slide-effect="fade">
     <div class="swiper-wrapper text-left">

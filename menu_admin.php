@@ -2,31 +2,21 @@
 include('header.php');
 
 // Comprobar si el usuario ha iniciado sesión
-if (!isset($_SESSION['id_usuario'])) {
+if(!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
     header('Location: registrar.php');
     exit;
 }
 
 // Comprobar si el usuario es un administrador
-if ($_SESSION['tipo_usuario'] != 1) {
+if($_SESSION['tipo_usuario'] != 1) {
     // El usuario no es un administrador, redirigir a la página de inicio
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 2) {
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 3) {
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 4) {
     header('Location: index.php');
     exit;
 }
 
 ?>
 <br><br>
-
 <div class="admin-menu">
     <h2>Menu de Administrador</h2>
 </div>
@@ -90,7 +80,6 @@ if ($_SESSION['tipo_usuario'] != 1) {
             </div>
         </div>
     </div>
-
     <style>
         .card {
             margin: 30px;
@@ -121,12 +110,9 @@ if ($_SESSION['tipo_usuario'] != 1) {
             font-size: 20px;
         }
     </style>
-
-
 </div>
 <br><br><br><br><br>
-
 <br><br><br><br><br><br><br><br><br><br>
-<?php 
+<?php
 ob_end_flush();
 include('footer.php'); ?>

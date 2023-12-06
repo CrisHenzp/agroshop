@@ -7,6 +7,12 @@ if(!isset($_SESSION['id_usuario'])) {
     header('Location: registrar.php');
     exit;
 }
+// Comprobar si el usuario es de tipo 4
+if($_SESSION['tipo_usuario'] == 4) {
+    // El usuario es de tipo 4, redirigir a la página de inicio
+    header('Location: index.php');
+    exit;
+}
 $id_usuario = $_SESSION['id_usuario'];
 $totalFinal = 0;
 $sql = "SELECT a.pdd_nombre, SUM(a.pdd_cantidad) AS cantidad, a.pdd_precio, a.pdd_total 

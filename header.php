@@ -19,7 +19,7 @@ $totalCantidad = 0;
 $totalPrecio = 0.00;
 
 foreach ($_SESSION['carrito'] as $producto) {
-  $totalCantidad += $producto['cantidad']; // Asume que la cantidad de cada producto es 1
+  $totalCantidad += $producto['cantidad']; 
   $totalPrecio += $producto['pro_precio'];
 }
 ?>

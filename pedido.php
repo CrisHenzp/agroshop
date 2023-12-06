@@ -1,5 +1,13 @@
-<?php include_once 'config/config.php';
+<?php ob_start();
 include('header.php');
+include_once 'config/config.php';
+
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION['id_usuario'])) {
+    // Si el usuario no ha iniciado sesión, redirigir a la página de registro
+    header('Location: registrar.php');
+    exit();
+  }
 
 if (!isset($_SESSION['id_usuario'])) {
     $id_usuario = $_GET['id_usuario'];
@@ -118,4 +126,5 @@ $_SESSION['carrito'] = array();
         }, 1000);
     }
 </script>
-<?php include('footer.php'); ?>
+<?php ob_end_flush();
+include('footer.php'); ?>

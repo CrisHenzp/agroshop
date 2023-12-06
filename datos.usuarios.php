@@ -1,8 +1,22 @@
-<?php include_once 'config/config.php'; ?>
+<?php ob_start();
+include('header.php');
+include_once 'config/config.php';
 
-<?php include('header.php'); ?>
+// Comprobar si el usuario ha iniciado sesión
+if(!isset($_SESSION['id_usuario'])) {
+    // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
+    header('Location: registrar.php');
+    exit;
+}
 
+// Comprobar si el usuario es un administrador
+if($_SESSION['tipo_usuario'] != 1) {
+    // El usuario no es un administrador, redirigir a la página de inicio
+    header('Location: index.php');
+    exit;
+}
 
+?>
 
 <link rel="stylesheet" type="text/css" href="Public/fonts.googleapis.com/css?family=Poppins:300,400,500">
 <link rel="stylesheet" href="Public/css/bootstrap.css">
@@ -116,4 +130,5 @@
         </div>
     </div>
 </div>
-<?php include('footer.php'); ?>
+<?php ob_end_flush();
+include('footer.php'); ?>

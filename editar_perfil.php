@@ -1,4 +1,4 @@
-<?php
+<?php ob_start();
 include_once 'config/config.php';
 include("header.php");
 
@@ -132,6 +132,5 @@ $row = mysqli_fetch_assoc($result);
     </div>
 </div>
 
-<?php
-include("footer.php");
-?>
+<?php ob_end_flush();
+include("footer.php"); ?>

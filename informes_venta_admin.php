@@ -7,6 +7,13 @@ if(!isset($_SESSION['id_usuario'])) {
     header('Location: registrar.php');
     exit;
 }
+// Comprobar si el usuario es un administrador
+if($_SESSION['tipo_usuario'] != 1) {
+    // El usuario no es un administrador, redirigir a la página de inicio
+    header('Location: index.php');
+    exit;
+}
+
 $id_usuario = $_SESSION['id_usuario'];
 $totalFinal = 0;
 $sql = "SELECT a.pdd_nombre, SUM(a.pdd_cantidad) AS cantidad2, a.pdd_precio, a.pdd_total, b.id_producto
@@ -136,9 +143,7 @@ $resultado = mysqli_query($conexion, $sql);
             });
         </script>
     </div>
-
 </div>
-
 
 <?php
 include('footer.php'); ?>

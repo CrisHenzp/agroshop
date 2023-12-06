@@ -1,9 +1,16 @@
-<?php include('header.php');
+<?php ob_start();
+include('header.php');
 include_once 'config/config.php';
 // Comprobar si el usuario ha iniciado sesión
 if(!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
     header('Location: registrar.php');
+    exit;
+}
+// Comprobar si el usuario es un administrador
+if($_SESSION['tipo_usuario'] != 1) {
+    // El usuario no es un administrador, redirigir a la página de inicio
+    header('Location: index.php');
     exit;
 }
 $id_usuario = $_SESSION['id_usuario'];
@@ -81,4 +88,5 @@ $resultado_pedido = mysqli_query($conexion, $query);
         xhr.send('idPedido=' + idPedido + '&nuevoEstado=' + nuevoEstado);
     }
 </script>
-<?php include('footer.php'); ?>
+<?php ob_end_flush(); 
+include('footer.php'); ?>

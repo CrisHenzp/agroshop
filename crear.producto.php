@@ -7,21 +7,14 @@ if(!isset($_SESSION['id_usuario'])) {
     header('Location: registrar.php');
     exit;
 }
-// Comprobar si el usuario es un administrador
-if ($_SESSION['tipo_usuario'] != 1) {
-    // El usuario no es un administrador, redirigir a la página de inicio
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 2) {
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 3) {
-    header('Location: index.php');
-    exit;
-} else if ($_SESSION['tipo_usuario'] == 4) {
+
+// Comprobar si el usuario es de tipo 4
+if($_SESSION['tipo_usuario'] == 4) {
+    // El usuario es de tipo 4, redirigir a la página de inicio
     header('Location: index.php');
     exit;
 }
+
 $id_usuario = $_SESSION['id_usuario'];
 ?>
 <script src="https://kit.fontawesome.com/332b6ce5a2.js" crossorigin="anonymous"></script>
@@ -208,6 +201,5 @@ $id_usuario = $_SESSION['id_usuario'];
         padding: 12px 20px;
     }
 </style>
-<?php
-ob_end_flush();
+<?php ob_end_flush();
 include('footer.php'); ?>

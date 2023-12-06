@@ -1,5 +1,6 @@
 <?php include('header.php');
 include_once 'config/config.php';
+
 // Comprobar si el usuario ha iniciado sesión
 if(!isset($_SESSION['id_usuario'])) {
     // El usuario no ha iniciado sesión, redirigir a la página de inicio de sesión
