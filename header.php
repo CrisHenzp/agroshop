@@ -1,8 +1,12 @@
-<?php session_start();
+<?php 
+$lifetime = 3600; // Duración de la sesión en segundos
+$path = "/"; // Ruta de la cookie
+$domain = ""; // Dominio de la cookie
+$secure = true; // Si la cookie solo se debe transmitir a través de una conexión segura HTTPS
+$httponly = true; // Si la cookie solo se debe hacer accesible a través del protocolo HTTP
 
-$lifetime = 3000;
-
-setcookie(session_name(), session_id(), time() + $lifetime, '/');
+session_set_cookie_params($lifetime, $path, $domain, $secure, $httponly);
+session_start();
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }

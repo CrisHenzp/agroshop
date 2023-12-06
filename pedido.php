@@ -2,13 +2,6 @@
 include('header.php');
 include_once 'config/config.php';
 
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION['id_usuario'])) {
-    // Si el usuario no ha iniciado sesión, redirigir a la página de registro
-    header('Location: registrar.php');
-    exit();
-  }
-
 if (!isset($_SESSION['id_usuario'])) {
     $id_usuario = $_GET['id_usuario'];
 }

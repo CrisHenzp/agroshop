@@ -1,4 +1,5 @@
-<?php include('header.php');
+<?php ob_start();
+include('header.php');
 include_once 'config/config.php';
 
 // Comprobar si el usuario ha iniciado sesión
@@ -145,5 +146,5 @@ $resultado = mysqli_query($conexion, $sql);
     </div>
 </div>
 
-<?php
+<?php ob_end_flush();
 include('footer.php'); ?>

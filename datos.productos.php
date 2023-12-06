@@ -79,6 +79,5 @@ $resultado_productos = mysqli_query($conexion, $query);
         </div>
     </div>
 </div>
-<?php
-ob_end_flush();
+<?php ob_end_flush();
 include('footer.php'); ?>
