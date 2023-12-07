@@ -192,6 +192,8 @@ foreach ($_SESSION['carrito'] as $producto) {
 
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
 
+                        echo '<a href="pedidos2.php" class="btn btn-primary btn-block"><b>Ver pedidos</b></a>';
+
                       } else if ($_SESSION['tipo_usuario'] == 3) { // comerciante
                         echo '<h3 class="username text-center">Menú de comerciante</h3>';
                         echo '<a href="editar_perfil.php" class="btn btn-primary btn-block"><b>Editar Perfil</b></a>';
@@ -201,6 +203,8 @@ foreach ($_SESSION['carrito'] as $producto) {
                         echo '<a href="crear.producto.php" class="btn btn-primary btn-block"><b>Mis productos</b></a>';
 
                         echo '<a href="informes_venta.php" class="btn btn-primary btn-block"><b>Informes de ventas</b></a>';
+
+                        echo '<a href="pedidos2.php" class="btn btn-primary btn-block"><b>Ver pedidos</b></a>';
 
                       } else if ($_SESSION['tipo_usuario'] == 4) { // usuario
                         echo '<h3 class="username text-center">Menú de cliente</h3>';
