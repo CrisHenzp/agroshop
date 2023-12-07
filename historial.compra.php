@@ -1,4 +1,5 @@
-<?php include('header.php');
+<?php ob_start();
+include('header.php');
 include_once 'config/config.php';
 
 // Comprobar si el usuario ha iniciado sesión
@@ -179,4 +180,5 @@ toggle between hiding and showing the dropdown content */
         }
     }
 </script>
-<?php include('footer.php'); ?>
+<?php ob_end_flush();
+include('footer.php'); ?>
