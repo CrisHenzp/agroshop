@@ -16,9 +16,10 @@ if($_SESSION['tipo_usuario'] != 1) {
 $id_usuario = $_SESSION['id_usuario'];
 $tipousu = $_SESSION['tipo_usuario'];
 
-$query = "SELECT *, b.usu_nombre, b.usu_apellido
+$query = "SELECT a.*, b.usu_nombre, b.usu_apellido, c.obs_descripcion
 FROM pedido a 
 INNER JOIN usuario b ON a.id_usuario = b.id_usuario
+LEFT JOIN observacion c ON a.id_pedido = c.id_pedido
 ORDER BY a.id_pedido";
 $resultado_pedido = mysqli_query($conexion, $query);
 ?>
@@ -36,6 +37,7 @@ $resultado_pedido = mysqli_query($conexion, $query);
                 <th>Total</th>
                 <th>Comprador</th>
                 <th>Estado</th>
+                <th>Observacion</th>
                 <th>Acciones</th>
             </tr>
             <?php while($pedido = mysqli_fetch_assoc($resultado_pedido)) { ?>
@@ -66,6 +68,9 @@ $resultado_pedido = mysqli_query($conexion, $query);
                         </select>
                     </td>
                     <td>
+                        <?php echo $pedido['obs_descripcion']; ?>
+                    </td>
+                    <td>
                         <a class="btn btn-small"
                             onclick="location.href='factura/invoice3.php?dat=<?php echo $pedido['ped_ref']; ?>'"><i
                                 class="fa-solid fa-download fa-2x" style="color:#9B9391;"></i></a>
@@ -88,5 +93,5 @@ $resultado_pedido = mysqli_query($conexion, $query);
         xhr.send('idPedido=' + idPedido + '&nuevoEstado=' + nuevoEstado);
     }
 </script>
-<?php ob_end_flush(); 
+<?php ob_end_flush();
 include('footer.php'); ?>

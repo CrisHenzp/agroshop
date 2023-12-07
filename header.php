@@ -165,7 +165,6 @@ foreach ($_SESSION['carrito'] as $producto) {
                 <div class="project-close"><span></span><span></span></div>
               </div>
             </div>
-
             <div class="rd-navbar-project rd-navbar-modern-project">
               <div class="rd-navbar-project-modern-header">
                 <h4 class="rd-navbar-project-modern-title"> </h4>
