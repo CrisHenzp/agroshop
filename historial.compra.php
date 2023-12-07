@@ -13,7 +13,7 @@ $id_usuario = $_SESSION['id_usuario'];
 <br><br>
 <h2>Mis compras</h2>
 <br><br>
-<div class="card" style="margin:auto; ">
+<div class="card" style="margin:30px; ">
     <br>
     <div class="card-body " style="overflow-x:auto;">
         <table class="table borderless table-striped">
