@@ -61,7 +61,8 @@ $id_usuario = $_SESSION['id_usuario'];
                                 <div id="myDropdown" class="dropdown-content">
                                     <form action="agregar_observacion.php" method="post">
                                         <input type="hidden" name="id_pedido" value="<?php echo $pedido['id_pedido']; ?>">
-                                        <textarea class="observacion" name="observacion" placeholder="Añade tu observación aquí"></textarea>
+                                        <textarea class="observacion" name="observacion"
+                                            placeholder="Añade tu observación aquí"></textarea>
                                         <button class="btn2" type="submit">Guardar observación</button>
                                     </form>
                                 </div>
@@ -94,7 +95,8 @@ $id_usuario = $_SESSION['id_usuario'];
         border-radius: 3px;
         border-color: #3c6a36;
     }
-    .btn2{
+
+    .btn2 {
         background-color: #3c6a36;
         color: #ffffff;
         font-size: 16px;
@@ -104,15 +106,18 @@ $id_usuario = $_SESSION['id_usuario'];
         border-color: #3c6a36;
         margin: 5px;
     }
-    .observacion{
+
+    .observacion {
         margin: 10px;
         font-size: large;
     }
+
     /* Dropdown button on hover & focus */
     .dropbtn:hover,
     .dropbtn:focus {
         background-color: #151515;
     }
+
     .btn2:hover,
     .btn2:focus {
         background-color: #151515;
