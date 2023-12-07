@@ -1,3 +1,5 @@
+<?php include('header.php'); ?>
+
 <?php
 
 include_once '../config/config.php';
@@ -86,6 +88,5 @@ if (isset($_POST['actualizar'])) {
             </div>
         </div>
     </div>
-
 </div>
-
+<?php include('../footer.php'); ?>

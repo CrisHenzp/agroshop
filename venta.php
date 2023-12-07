@@ -1,57 +1,59 @@
-<?php include('header.php'); ?>
+<?php include('header.php');
+include_once 'config/config.php';
+ini_set('memory_limit', '-1');
 
+$consulta = "SELECT * FROM producto a 
+  INNER JOIN usuario b ON a.id_usuario = b.id_usuario
+  INNER JOIN tipousuario c ON b.id_tipousuario = c.id_tipousuario
+  INNER JOIN unidad_medida d ON a.id_unit = d.id_unit
+  WHERE pro_tipo = 2 AND a.pro_estado = 1";
+$resultado = mysqli_query($conexion, $consulta);
 
-<!-- Control buttons -->
-<div style="margin-bottom:10px">
-  <button class="btn active" onclick="filterSelection('all')"> Mostrar todo</button>
-  <button class="btn" onclick="filterSelection('productor')"> Productor</button>
-  <button class="btn" onclick="filterSelection('comerciante')"> Comerciante</button>
-  <button class="btn" onclick="filterSelection('fruits')"> Fruits</button>
-  <button class="btn" onclick="filterSelection('colors')"> Colors</button>
-</div>
+$productos = array(); // Array para almacenar los resultados de la consulta
 
-<!-- The filterable elements. Note that some have multiple class names (this can be used if they belong to multiple categories) -->
+// Agregar todos los resultados a la matriz de productos
+while ($producto = mysqli_fetch_assoc($resultado)) {
+  $productos[] = $producto;
+}
+?>
 
-<div class="image-container">
-  <div class="card filterDiv comerciante">
-     <img src="https://santaisabel.vtexassets.com/arquivos/ids/174685-750-750?width=750&height=750"  alt="fruits" style="max-width: 100%; height: auto;">
-      <h4>Manzana Roja Granel</h1>
-      <p class="price">$1145</p>
-      <p>500 g ($2.290 x kg)</p>
-      <p>Comerciante: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://santaisabel.vtexassets.com/arquivos/ids/169527/Platano-granel.jpg?v=637521224695700000" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Platanos granel</h1>
-      <p class="price">$695</p>
-      <p>500 g ($1.590 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://jumbo.vtexassets.com/arquivos/ids/416214/Kiwi-exportacion-granel.jpg?v=637479990229300000" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Kiwi exportación granel</h1>
-      <p class="price">$945</p>
-      <p>500 g ($1.890 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://santaisabel.vtexassets.com/arquivos/ids/162932-280-280?" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Naranja granel</h1>
-      <p class="price">$1145</p>
-      <p>500 g ($2.290 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
-  </div>
-  <div class="card filterDiv comerciante">
-    <img src="https://santaisabel.vtexassets.com/arquivos/ids/162874-750-750?" alt="fruits" style="max-width: 100%; height: auto;">
-    <h4>Frutilla pote 300 g</h1>
-      <p class="price">$2490</p>
-      <p>1 un ($8.300 x kg)</p>
-      <p>Productor: tal</p>
-      <p><button>Agregar a carrito</button></p>
+<h3>listado de productos</h3>
+<div class="container">
+  <div class="row">
+    <?php
+    foreach ($productos as $producto) {
+      ?>
+      <div class="col-sm-3">
+        <div class="card">
+
+          <form id="formulario" name="formulario" method="POST" action="agregar_al_carrito.php">
+            <img src="<?php echo $producto['pro_imagen']; ?>" alt="fruits" style="max-width: 100%; height: 250px;">
+            <h4>
+              <?php echo $producto['pro_nombre']; ?>
+            </h4>
+            <p class="price">$
+              <?php echo number_format($producto['pro_precio'], 0, ',', '.'); ?> x
+              <?php echo $producto['unit_tipo']; ?>
+            </p>
+            <p>
+              <?php echo $producto['pro_descripcion']; ?>
+            </p>
+            <p>
+              <?php echo isset($producto['tus_nombre']) ? $producto['tus_nombre'] : ''; ?>:
+              <?php echo isset($producto['usu_nombre']) ? $producto['usu_nombre'] : ''; ?>
+              <?php echo isset($producto['usu_apellido']) ? $producto['usu_apellido'] : ''; ?>
+            </p>
+            <input type="hidden" name="pro_nombre" value="<?php echo $producto['pro_nombre']; ?>">
+            <input type="hidden" name="pro_imagen" value="<?php echo $producto['pro_imagen']; ?>">
+            <input type="hidden" name="pro_precio" value="<?php echo $producto['pro_precio']; ?>">
+            <input type="hidden" name="cantidad" value="1">
+            <p><button class="agregar-carrito" type="submit" data-id="<?php echo $producto['id_producto']; ?>">Agregar
+                al
+                carrito</button></p>
+          </form>
+        </div>
+      </div>
+    <?php } ?>
   </div>
 </div>
 
@@ -62,11 +64,14 @@
     margin: auto;
     text-align: center;
     font-family: arial;
+
   }
 
-  .price {
-    color: grey;
-    font-size: 22px;
+  .card p {
+    max-height: 100px;
+    /* Ajusta este valor según tus necesidades */
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .card button {
@@ -88,89 +93,6 @@
   .container {
     overflow: hidden;
   }
-
-  .filterDiv {
-    float: left;
-    margin: 10px;
-    display: none;
-    /* Hidden by default */
-  }
-
-  /* The "show" class is added to the filtered elements */
-  .show {
-    display: block;
-  }
-
-  /* Style the buttons */
-  .btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    cursor: pointer;
-  }
-
-  /* Add a light grey background on mouse-over */
-
-
-  /* Add a dark background to the active button */
-  .btn.active {
-    background-color: #666;
-    color: white;
-  }
 </style>
-<script>
-
-  filterSelection("all")
-  function filterSelection(c) {
-    var x, i;
-    x = document.getElementsByClassName("filterDiv");
-    if (c == "all") c = "";
-    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-    for (i = 0; i < x.length; i++) {
-      w3RemoveClass(x[i], "show");
-      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-    }
-  }
-
-  // Show filtered elements
-  function w3AddClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-      if (arr1.indexOf(arr2[i]) == -1) {
-        element.className += " " + arr2[i];
-      }
-    }
-  }
-
-  // Hide elements that are not selected
-  function w3RemoveClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    for (i = 0; i < arr2.length; i++) {
-      while (arr1.indexOf(arr2[i]) > -1) {
-        arr1.splice(arr1.indexOf(arr2[i]), 1);
-      }
-    }
-    element.className = arr1.join(" ");
-  }
-
-  // Add active class to the current control button (highlight it)
-  var btnContainer = document.getElementById("myBtnContainer");
-  var btns = btnContainer.getElementsByClassName("btn");
-  for (var i = 0; i < btns.length; i++) {
-    btns[i].addEventListener("click", function () {
-      var current = document.getElementsByClassName("active");
-      current[0].className = current[0].className.replace(" active", "");
-      this.className += " active";
-    });
-  }
-</script>
-
 <br><br><br><br><br>
 <?php include('footer.php'); ?>
-</body>
-
-</html>

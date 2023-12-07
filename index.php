@@ -1,7 +1,6 @@
 <?php include('header.php'); ?>
 
 <body>
-
   <section class="section swiper-container swiper-slider swiper-slider-modern" data-loop="true" data-autoplay="5000"
     data-simulate-touch="true" data-nav="true" data-slide-effect="fade">
     <div class="swiper-wrapper text-left">
@@ -79,7 +78,7 @@
                 <div class="box-icon-ruby-icon linearicons-leaf"></div>
               </div>
               <div class="unit-body">
-                <h4 class="box-icon-ruby-title"><a href="#">Nacional</a></h4>
+                <h4 class="box-icon-ruby-title"><a href="venta.php">Nacional</a></h4>
               </div>
             </div>
           </article>
@@ -92,7 +91,7 @@
                 <div class="box-icon-ruby-icon linearicons-sun"></div>
               </div>
               <div class="unit-body">
-                <h4 class="box-icon-ruby-title"><a href="#">Todos nuestros Proovedores</a></h4>
+                <h4 class="box-icon-ruby-title"><a href="venta.php">Todos nuestros Proovedores</a></h4>
               </div>
             </div>
           </article>
@@ -116,15 +115,15 @@
                       <div class="product-figure"><img src="Public/images/product-5-270x280.png" alt="" width="270"
                           height="280" />
                         <div class="product-button"><a class="button button-md button-white button-ujarak"
-                            href="#">Comprar</a></div>
+                            href="venta.php">Comprar</a></div>
                       </div>
                     </div>
                     <div class="unit-body">
-                      <h6 class="product-title"><a href="#">Frutillas</a></h6>
+                      <h6 class="product-title"><a href="venta.php">Frutillas</a></h6>
                       <div class="product-price-wrap">
                         <div class="product-price product-price-old">$1.550</div>
                         <div class="product-price">$1,500</div>
-                      </div><a class="button button-sm button-secondary button-ujarak" href="#">Comprar</a>
+                      </div><a class="button button-sm button-secondary button-ujarak" href="venta.php">Comprar</a>
                     </div>
                   </div>
                 </article>
@@ -139,14 +138,14 @@
                       <div class="product-figure"><img src="Public/images/product-6-270x280.png" alt="" width="270"
                           height="280" />
                         <div class="product-button"><a class="button button-md button-white button-ujarak"
-                            href="#">Comprar</a></div>
+                            href="venta.php">Comprar</a></div>
                       </div>
                     </div>
                     <div class="unit-body">
                       <h6 class="product-title"><a href="#">Platano</a></h6>
                       <div class="product-price-wrap">
                         <div class="product-price">$1.250</div>
-                      </div><a class="button button-sm button-secondary button-ujarak" href="#">Comprar</a>
+                      </div><a class="button button-sm button-secondary button-ujarak" href="venta.php">Comprar</a>
                     </div>
                   </div>
                 </article>
@@ -168,7 +167,7 @@
                       <h6 class="product-title"><a href="#">Kiwi</a></h6>
                       <div class="product-price-wrap">
                         <div class="product-price">$1.600</div>
-                      </div><a class="button button-sm button-secondary button-ujarak" href="#">Comprar</a>
+                      </div><a class="button button-sm button-secondary button-ujarak" href="venta.php">Comprar</a>
                     </div>
                   </div>
                 </article>
@@ -183,14 +182,14 @@
                       <div class="product-figure"><img src="Public/images/product-7-270x280.png" alt="" width="270"
                           height="280" />
                         <div class="product-button"><a class="button button-md button-white button-ujarak"
-                            href="#">comprar</a></div>
+                            href="venta.php">comprar</a></div>
                       </div>
                     </div>
                     <div class="unit-body">
-                      <h6 class="product-title"><a href="#">Naranja</a></h6>
+                      <h6 class="product-title"><a href="venta.php">Naranja</a></h6>
                       <div class="product-price-wrap">
                         <div class="product-price">$1.700</div>
-                      </div><a class="button button-sm button-secondary button-ujarak" href="#">comprar</a>
+                      </div><a class="button button-sm button-secondary button-ujarak" href="venta.php">comprar</a>
                     </div>
                   </div>
                 </article>

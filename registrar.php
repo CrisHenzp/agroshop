@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,6 @@
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
   <!-- Google Fonts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <!-- Estilos -->
@@ -14,21 +17,12 @@
 </head>
 
 <body>
-  <?php
-  session_start();
-  if (isset($_SESSION['message'])) {
-    echo '<p class="message">' . $_SESSION['message'] . '</p>';
-    unset($_SESSION['message']);
-  }
-  ?>
-
 
   <div class="login-page">
-
     <img src="Public/images/logo-default-196x47.png" alt="Descripción de la imagen">
     <div class="form">
       <form class="login-form" action="login/ingreso.php" method="post">
-        <input type="text" name="usuario_1" placeholder="usuario" required />
+        <input type="text" name="usuario_1" placeholder="Usuario" required />
         <input type="password" name="pass" placeholder="Contraseña" required />
         <button type="submit" value="iniciar" name="iniciar_sesion">Iniciar sesion</button>
         <p class="message">No estas registrado? <a href="#">Crear cuenta</a></p>
@@ -38,6 +32,7 @@
       <form class="register-form" action="login/registro_usu.php" method="post">
         <input type="text" name="nombre" placeholder="Nombre" required />
         <input type="text" name="apellido" placeholder="Apellido" required />
+        <input type="text" name="rut" placeholder="rut" required />
         <input type="text" name="usuario" placeholder="usuario" required />
         <input type="text" name="email" placeholder="Correo electronico" required />
         <input type="password" name="pass" placeholder="Contraseña" required />
@@ -52,8 +47,6 @@
         <button type="submit" value="registro" name="registrar">Registar</button>
         <p class="message">Ya estas registrado? <a href="#">Iniciar sesion</a></p>
       </form>
-
-
     </div>
   </div>
 
@@ -180,11 +173,7 @@
     $('.message a').click(function () {
       $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
     });
-
-
   </script>
-
-
 </body>
 
 </html>

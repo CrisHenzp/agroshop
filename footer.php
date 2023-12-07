@@ -1,4 +1,4 @@
-<footer class="section footer-variant-2 footer-modern context-dark section-top-image section-top-image-dark" style="margin-top:10%">
+<footer class="section footer-variant-2 footer-modern context-dark section-top-image section-top-image-dark">
   <div class="footer-variant-2-content">
     <div class="container">
       <div class="row row-40 justify-content-between">
