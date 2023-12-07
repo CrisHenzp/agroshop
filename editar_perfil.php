@@ -67,7 +67,7 @@ $row = mysqli_fetch_assoc($result);
                 <div class="container " style="font-weight:bold">
                     <div class="row">
                         <div class="col">
-                            <label>tipo usuario:</label>
+                            <label>Tipo usuario:</label>
                             <input disabled type="text" class="form-control" name="direccion"
                                 value="<?php echo $row['tus_nombre']; ?>" placeholder="tipousuario" required>
                         </div>
