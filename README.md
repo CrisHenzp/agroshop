@@ -5,4 +5,4 @@ Se debe instalar xampp para el uso de este proyecto, esta realizado en php y mys
 
 la carpeta debe ser movida al directorio xampp\htdocs (en el disco donde este instalado xampp)
 
-se debe importar la base de datos llamada data.base.agroshop 
+se debe importar la base de datos llamada agroshop final
